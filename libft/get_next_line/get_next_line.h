@@ -26,10 +26,10 @@
 # endif
 
 char		*get_next_line(int fd);
-int			ft_strlen(const char *str);
+int			ft_strlen_gnl(const char *str);
 bool		ft_ischr(const char *str, int c);
-char		*ft_strjoin(char *s1, const char *s2);
-char		*ft_strdup(const char *s1);
+char		*ft_strjoin_gnl(char *s1, const char *s2);
+char		*ft_strdup_gnl(const char *s1);
 char		*ft_assembleline(char *tmp);
 char		*ft_createtmp(int fd, char *buffer, char *tmp);
 

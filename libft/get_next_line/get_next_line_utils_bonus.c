@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen_gnl(const char *str)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin_gnl(char *s1, const char *s2)
 {
 	char	*dest;
 	int		i;
@@ -69,7 +69,7 @@ bool	ft_ischr(const char *str, int c)
 	return (false);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_gnl(const char *s1)
 {
 	char	*dup;
 	int		i;
