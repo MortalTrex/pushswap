@@ -27,5 +27,10 @@ typedef struct s_stack
 void	sa(t_stack *stack_a, bool print);
 void	sb(t_stack *stack_b, bool print);
 void ss(t_stack *stack_a, t_stack *stack_b);
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_a, t_stack *stack_b);
+void rab(t_stack *stack_ab, int stack);
+void rra(t_stack *stack_a);
+
 
 #endif

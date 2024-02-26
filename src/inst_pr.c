@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_pr.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/26 14:02:45 by rbalazs           #+#    #+#             */
+/*   Updated: 2024/02/26 14:02:47 by rbalazs          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
@@ -27,7 +39,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
-	i = stack_b->len;
+i = stack_b->len;
 	if (stack_a->len == 0)
 		return ;
 	while (i > 0)
@@ -46,77 +58,21 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	printf("pb\n");
 }
 
-void ra(t_stack *stack_a)
+void	rab(t_stack *stack_ab, int stack)
 {
- int i;
+	int	i;
+	int	temp;
 
- i = stack_a->len;
- if (stack_a->len == 0)
-  return;
- while (i > 0)
- {
-  stack_a->tab[i] = stack_a->[i - 1];
-  i--;
- }
-}
-
-int		main(void)
-{
- // Création des piles
- t_stack stack_a;
- t_stack stack_b;
- stack_a.len = 0;
- stack_b.len = 0;
- stack_a.tab = malloc(sizeof(int) * 10); 
- stack_b.tab = malloc(sizeof(int) * 10); 
- 
- // Ajout de quelques éléments à la pile B pour le test
- stack_a.tab[0] = 3;
- stack_a.tab[1] = 5;
- stack_a.tab[2] = 4;
- stack_a.len = 3;
-
- stack_b.tab[0] = 0;
- stack_b.tab[1] = 8;
- stack_b.tab[2] = 10;
- stack_b.len = 3;
-
- // Affichage des piles avant l'appel de la fonction
- printf("Stack A: ");
- for (int i = 0; i < stack_a.len; i++)
- {
- 	printf("%d ", stack_a.tab[i]);
- }
- printf("\n");
- 
- printf("Stack B: ");
- for (int i = 0; i < stack_b.len; i++)
- {
- 	printf("%d ", stack_b.tab[i]);
- }
- printf("\n");
-
- // Appel de la fonction 
- pb(&stack_a, &stack_b);
- 
- // Affichage des piles après l'appel de la fonction
- printf("Stack A: ");
- for (int i = 0; i < stack_a.len; i++)
- {
- 	printf("%d ", stack_a.tab[i]);
- }
- printf("\n");
- 
- printf("Stack B: ");
- for (int i = 0; i < stack_b.len; i++) 
- {
- 	printf("%d ", stack_b.tab[i]);
- }
- printf("\n");
- 
- // Libération de la mémoire allouée pour les piles
- free(stack_a.tab);
- free(stack_b.tab);
- 
- return (0);
+	i = 0;
+	temp = stack_ab->tab[0];
+	while (i < stack_ab->len)
+	{
+		stack_ab->tab[i] = stack_ab->tab[i + 1];
+		i++;
+	}
+	stack_ab->tab[i - 1] = temp;
+	if (stack == 0)
+		printf("ra\n");
+	if (stack == 1)
+		printf("rb\n");
 }

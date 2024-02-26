@@ -1,48 +1,17 @@
 #include "../include/push_swap.h"
 
-int main() 
+void rra(t_stack *stack_a)
 {
-  t_stack stack;
-  t_stack stackb;
-  int	array[] = {1, 2, 3, 4, 5};
-  int	arrayb[] = {1, 2, 3};
-  int	i = 0;
-  stack.tab = array;
-	stack.len = 5;
-	stackb.tab = arrayb;
-	stackb.len = 3;
+	int	i;
+	int	temp;
 
-  printf("Avant : \n");
-  while	(i < stack.len) 
-	{      
-		printf("%d ", stack.tab[i]);
-    i++;
-  }
-  printf("\n");
-  i = 0;
-  while	(i < stackb.len) 
-	{      
-		printf("%d ", stack.tab[i]);
-    i++;
-  }
-  printf("\n");
-  
-  sa(&stack, false);
-  //ss(&stack, &stackb);
-
-  printf("Après : \n");
-  i = 0;
-  while	(i < stack.len) 
-  {  
-  	printf("%d ", stack.tab[i]);
-  	i++;
-  }
-  printf("\n");
-  i = 0;
-  while	(i < stackb.len) 
-	{      
-		printf("%d ", stackb.tab[i]);
-    i++;
-  }
-  printf("\n");
+	i = 0;
+	temp = stack_a->tab[i];
+	while (i < stack_a->len)
+	{
+		stack_a->tab[i + 1] = stack_a->tab[i];
+		i++;
+	}
+	stack_a->tab[] = temp;
+	printf("rra\n");
 }
