@@ -1,17 +1,20 @@
 #include "../include/push_swap.h"
 
-void rra(t_stack *stack_a)
+void rrab(t_stack *stack_ab, int stack)
 {
-	int	i;
 	int	temp;
+	int	size;
 
-	i = 0;
-	temp = stack_a->tab[i];
-	while (i < stack_a->len)
+	size = stack_ab->len;
+	temp = stack_ab->tab[size - 1];
+	while (size > 0)
 	{
-		stack_a->tab[i + 1] = stack_a->tab[i];
-		i++;
+		stack_ab->tab[size] = stack_ab->tab[size - 1];
+		size--;
 	}
-	stack_a->tab[] = temp;
-	printf("rra\n");
+	stack_ab->tab[0] = temp;
+	if (stack == 0)
+		printf("rra\n");
+	if (stack == 1)
+		printf("rrb\n");
 }

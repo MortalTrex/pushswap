@@ -30,7 +30,7 @@ void ss(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 void rab(t_stack *stack_ab, int stack);
-void rra(t_stack *stack_a);
+void rrab(t_stack *stack_a, int stack);
 
 
 #endif
