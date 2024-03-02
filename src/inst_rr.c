@@ -18,3 +18,10 @@ void rrab(t_stack *stack_ab, int stack)
 	if (stack == 1)
 		printf("rrb\n");
 }
+
+void rrr(t_stack *stack_a, t_stack *stack_b)
+{
+	rrab(stack_a, 0);
+	rrab(stack_b, 0);
+	printf("rrr");
+}

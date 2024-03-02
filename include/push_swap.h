@@ -31,6 +31,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 void rab(t_stack *stack_ab, int stack);
 void rrab(t_stack *stack_a, int stack);
+void rrr(t_stack *stack_a, t_stack *stack_b);
 
 
 #endif

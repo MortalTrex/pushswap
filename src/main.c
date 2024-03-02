@@ -92,7 +92,7 @@ int		main(void)
 
  // Appel de la fonction
  //rab(&stack_a, 0);
- rrab(&stack_a, 0);
+ rrr(&stack_a, 0);
 
  // Affichage des piles après l'appel de la fonction
  printf("Stack A: ");
