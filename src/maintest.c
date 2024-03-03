@@ -51,6 +51,7 @@ int main()
 */
 
 //INSTRR AND PR
+/*
 int		main(void)
 {
  // Création des piles
@@ -113,3 +114,4 @@ int		main(void)
  free(stack_a.tab);
  free(stack_b.tab);
 }
+*/

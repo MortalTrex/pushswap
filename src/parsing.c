@@ -1,7 +1,7 @@
 #include "../include/push_swap.h"
 
 // SPLITE
-
+/*
 int	ft_countwords(char const *str, char c)
 {
 	int	i;
@@ -125,33 +125,82 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
+int	ft_atoi(const char *str)
+{
+	int				i;
+	int				sign;
+	long int		res;
+
+	res = 0;
+	i = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		if (str[i + 1] == '+' || str[i + 1] == '-')
+			return (0);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res + (str[i] - '0');
+		res *= 10;
+		i++;
+	}
+	return ((res * sign) / 10);
+}
+*/
+
+void	free_stack(t_stack_node **stack) //Define a function to free a stack if there are errors
+{
+	t_stack_node	*tmp; //To store the next node in the stack before the current node is freed, because once a node is freed, you can't access its next pointer
+	t_stack_node	*current;
+
+	if (!stack) //Check for an empty stack
+		return ;
+	current = *stack;
+	while (current) //As long as a node exist in the stack
+	{
+		tmp = current->next; //Assign to `tmp` the pointer to the next node
+		current->nbr = 0; //Assigning the node to `0` before freeing is not strictly necessary but it can help catch potential bugs such as memory-leaks and improve debugging
+		free(current); //Free the current node, deallocating the memory occupied by that node
+		current = tmp; //Assign `tmp` as the current first node
+	}
+	*stack = NULL;
+}
+
+void	free_errors(t_stack_node **a)
+{
+	free_stack(a);
+	exit(1);
+}
+
+void init_stack_a(t_stack_node **a, char **argv)
+{
+	long	n;
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		n = ft_atoi(argv[i]);
+		printf("%ld - ", n);
+		i++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	char **words;
-	char *tmp;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-	if (argc < 2) 
-	{
-		printf("Usage: %s <sentence1> <sentence2> ... <sentenceN>\n", argv[0]);
-		return 1;
-	}
-	
-	i = 1;
-	while (i < argc)
-	{
-		tmp = ft_strjoin(argv[i], argv[i + 1]);
-		words = ft_split(tmp, ' ');
-
-		for (int j = 0; words[j] != NULL; j++)
-		{
-			printf("%s", words[j]);
-			free(words[j]);
-		}
-		free(words);
-		i++;
-	}
-	free(tmp);
-	return 0;
+	a = NULL;
+	b = NULL;
+	if (argc < 2)
+		return 0;
+	init_stack_a(&a, argv + 1);
+	free_stack(&a);
 }

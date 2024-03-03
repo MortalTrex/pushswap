@@ -5,13 +5,14 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 MAIN = src/main.c
 SRC = $(wildcard src/*.c)
+DEPS = $(wildcard includes/*.h)
 
 LIBFT_DIR = libft/
 LIBFT_LIB = libft/libft.a
 
 all : $(NAME)
 
-$(NAME) : $(LIBFT_LIB) $(SRC)
+$(NAME) : $(LIBFT_LIB) $(SRC) $(DEPS) 
 	$(CC) $(CFLAGS) $(SRC) $(LIBFT_LIB) -o $(NAME)
 
 $(LIBFT_LIB):
