@@ -2,11 +2,10 @@ NAME = libft.a
 
 DEPS = ./libft_mandatory/includes/libft.h ./gnl/includes/get_next_line_bonus.h ./ft_printf/includes/ft_printf.h
 
-PRINTF_SRCS = $(wildcard ./ft_printf/srcs/*.c)
-GNL_SRCS = $(wildcard ./gnl/srcs/*.c)
-LIBFT_SRCS = $(wildcard ./libft_mandatory/srcs/*.c)
+PRINTF_SRCS = $(wildcard ./ft_printf/*.c)
+LIBFT_SRCS = $(wildcard ./libft_core/*.c)
 
-SRC = $(LIBFT_SRCS) $(PRINTF_SRCS) $(GNL_SRCS)
+SRC = $(LIBFT_SRCS) $(PRINTF_SRCS)
 OBJ = $(SRC:.c=.o)
 
 CC = cc

@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft_core/libft.h"
-# include	"../libft/get_next_line/get_next_line_bonus.h"
 # include "../libft/ft_printf/ft_printf.h"
+# include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -45,5 +45,11 @@ void rab(t_stack *stack_ab, int stack);
 void rrab(t_stack *stack_a, int stack);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 
+//FREE
+void	free_stack(t_stack_node **stack);
+void	free_errors(t_stack_node **a);
+
+//VERIF
+bool	ft_verifdouble(t_stack_node **stack_a, int numbers);
 
 #endif
