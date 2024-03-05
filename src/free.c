@@ -18,8 +18,8 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **stack_a)
 {
-	free_stack(a);
+	free_stack(stack_a);
 	exit(1);
 }

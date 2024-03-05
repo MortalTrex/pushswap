@@ -46,10 +46,10 @@ void rrab(t_stack *stack_a, int stack);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 
 //FREE
-void	free_stack(t_stack_node *stack);
-void	free_errors(t_stack_node **a);
+void	free_stack(t_stack_node **stack);
+void	free_errors(t_stack_node **stack_a);
 
 //VERIF
-bool	ft_verifdouble(t_stack_node **stack_a, int numbers);
+bool	ft_verifdouble(t_stack_node *stack_a, int numbers);
 
 #endif
