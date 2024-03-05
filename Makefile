@@ -5,7 +5,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 MAIN = src/main.c
 SRC = $(wildcard src/*.c)
-DEPS = $(wildcard includes/*.h)
+DEPS = $(wildcard include/*.h)
 
 LIBFT_DIR = libft/
 LIBFT_LIB = libft/libft.a

@@ -30,9 +30,9 @@ typedef	struct	s_stack_node
 	int	push_cost;
 	bool	above_median;
 	bool	cheapest;
-	struct	s_stack_node	*target_node;
 	struct	s_stack_node	*next;
 	struct	s_stack_node	*prev;
+	struct	s_stack_node	*target_node;
 }	t_stack_node;
 
 //INSTRUCTIONS
@@ -46,7 +46,7 @@ void rrab(t_stack *stack_a, int stack);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 
 //FREE
-void	free_stack(t_stack_node **stack);
+void	free_stack(t_stack_node *stack);
 void	free_errors(t_stack_node **a);
 
 //VERIF

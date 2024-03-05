@@ -57,8 +57,9 @@ void init_stack_a(t_stack_node **stack_a, char **argv)
 	{
 		numbers = ft_atoi(argv[i]);
 		printf("%ld - ", numbers);
-		if (ft_verifdouble(stack_a, (int)numbers) == true)
-			free_errors(stack_a);
+		if (ft_verifdouble(*stack_a, (int)numbers) == true)
+			//free_errors(stack_a);
+			printf("Doublon");
 		i++;
 	}
 	append_node(stack_a, (int)numbers);
