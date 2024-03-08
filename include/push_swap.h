@@ -52,4 +52,9 @@ void	free_errors(t_stack_node **stack_a);
 //VERIF
 bool	ft_verifdouble(t_stack_node *stack_a, int numbers);
 
+char **ps_split(char *s, char c);
+
+//UTILS
+t_stack_node	*find_last(t_stack_node *stack); 
+
 #endif

@@ -10,3 +10,7 @@ bool	ft_verifdouble(t_stack_node *stack_a, int numbers)
 	}
 	return (false);
 }
+
+//bool ft_verifnumber(t_stack_node *stack_a, int	numbers)
+
+//bool ft_verifint(t_stack_node *stack_a, int	numbers)
