@@ -21,5 +21,6 @@ void	free_stack(t_stack_node **stack)
 void	free_errors(t_stack_node **stack_a)
 {
 	free_stack(stack_a);
+	printf("Error\n");
 	exit(1);
 }

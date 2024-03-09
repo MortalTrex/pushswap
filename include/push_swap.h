@@ -26,13 +26,8 @@ typedef struct s_stack
 typedef	struct	s_stack_node
 {
 	int	nbr;
-	int	index;
-	int	push_cost;
-	bool	above_median;
-	bool	cheapest;
 	struct	s_stack_node	*next;
 	struct	s_stack_node	*prev;
-	struct	s_stack_node	*target_node;
 }	t_stack_node;
 
 //INSTRUCTIONS
@@ -51,8 +46,8 @@ void	free_errors(t_stack_node **stack_a);
 
 //VERIF
 bool	ft_verifdouble(t_stack_node *stack_a, int numbers);
+bool	ft_verifsyntax(char *argv); 
 
-char **ps_split(char *s, char c);
 
 //UTILS
 t_stack_node	*find_last(t_stack_node *stack); 
