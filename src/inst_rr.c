@@ -31,7 +31,7 @@ void	rrab(t_stack *stack_ab, int stack)
 		printf("rrb\n");
 }
 
-void	rrr(t_stack *stack_a, t_stack *stac_b)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rrab(stack_a, 0);
 	rrab(stack_b, 0);

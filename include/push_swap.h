@@ -50,6 +50,9 @@ bool	ft_verifsyntax(char *argv);
 
 
 //UTILS
-t_stack_node	*find_last(t_stack_node *stack); 
+t_stack_node	*find_last(t_stack_node *stack);
+int	ft_stack_len(t_stack_node *stack); 
+
+t_stack ft_hybrid_listotab(t_stack_node *stacklist);
 
 #endif
