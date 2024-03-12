@@ -32,7 +32,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 		stack_b->tab[i] = stack_b->tab[i + 1];
 		i++;
 	}
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
@@ -55,7 +55,7 @@ i = stack_b->len;
 		stack_a->tab[i] = stack_a->tab[i + 1];
 		i++;
 	}
-	printf("pb\n");
+	ft_printf("pb\n");
 }
 
 void	rab(t_stack *stack_ab, int stack)
@@ -72,7 +72,7 @@ void	rab(t_stack *stack_ab, int stack)
 	}
 	stack_ab->tab[i - 1] = temp;
 	if (stack == 0)
-		printf("ra\n");
+		ft_printf("ra\n");
 	if (stack == 1)
-		printf("rb\n");
+		ft_printf("rb\n");
 }
