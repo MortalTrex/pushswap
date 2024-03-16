@@ -24,6 +24,12 @@ typedef struct s_stack
 	int	len;
 }			t_stack;
 
+typedef struct	s_nbinfo
+{
+	int	*tab;
+	int	len;
+}	t_nbinfo;
+
 typedef	struct	s_stack_node
 {
 	int	nbr;

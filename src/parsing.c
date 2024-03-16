@@ -34,7 +34,7 @@ static long	ft_atol(t_stack_node **stack, const char *s)
 
 static void	append_node(t_stack_node **stack, int number)
 {
-	t_stack_node	*node; 	
+	t_stack_node	*node;	
 	t_stack_node	*last_node;
 	if (!stack)
 		return ;
@@ -83,6 +83,8 @@ t_stack	init_stack_b(t_stack *stack_a)
 
 	i = 0;
 	stack_b.tab = malloc(sizeof(int) * stack_a->len);
+	if (!stack_b.tab)
+		exit(1);
 	stack_b.len = stack_a->len;
 	while(i < stack_b.len)
 	{
