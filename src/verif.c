@@ -11,6 +11,20 @@ bool	ft_verifdouble(t_stack_node *stack_a, int number)
 	return (false);
 }
 
+bool ft_issort(t_stack stacktab)
+{
+	int	i;
+
+	i = 0;
+	while (stacktab.tab[i])
+	{
+		if (stacktab.tab[i] > stacktab.tab[i + 1])
+			return(false);
+		i++;
+	}
+	return(true);
+}
+
 bool	ft_verifsyntax(char *argv) 
 {
 	if (!(*argv == '+'|| *argv == '-' || (*argv >= '0' && *argv <= '9'))) 

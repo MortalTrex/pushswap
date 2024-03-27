@@ -24,5 +24,6 @@ int	main(int argc, char **argv)
  	}
  	printf("\n");
  	ft_radix(stacktab_a);
+	printf("Stack triée ?: %d\n", ft_issort(stacktab_a));
  	free(stacktab_a.tab);
 }

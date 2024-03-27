@@ -53,7 +53,8 @@ void	free_errors(t_stack_node **stack_a);
 
 //VERIF
 bool	ft_verifdouble(t_stack_node *stack_a, int numbers);
-bool	ft_verifsyntax(char *argv); 
+bool	ft_verifsyntax(char *argv);
+bool ft_issort(t_stack stacktab);
 
 //PARSING
 void init_stack_a(t_stack_node **stack_a, char **argv);
