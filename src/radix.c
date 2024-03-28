@@ -89,6 +89,6 @@ void	ft_radix(t_stack stack_a)
 	printf("\033[0;33mAprès le radix :\033[0m\n");
  	for (int i = 0; i < stack_a.len; i++)
  	{
- 		printf("%d ", stack_a.tab[i]);
+ 		printf("%d\n", stack_a.tab[i]);
  	}
 }

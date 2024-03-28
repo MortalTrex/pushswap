@@ -16,8 +16,9 @@ bool ft_issort(t_stack stacktab)
 	int	i;
 
 	i = 0;
-	while (stacktab.tab[i])
+	while (i < stacktab.len - 1)
 	{
+		printf("CONTENU : %d\n", stacktab.tab[i]);
 		if (stacktab.tab[i] > stacktab.tab[i + 1])
 			return(false);
 		i++;
