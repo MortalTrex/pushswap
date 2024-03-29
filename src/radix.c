@@ -1,22 +1,22 @@
 #include "../include/push_swap.h"
 
-// void	recurrence_test(int* example_array, int* count)
-// {
-// 	if (*count > 10) 
-// 		return ;
-// 	printf("recurrence count %d\n", *count);
-// 	++*count;
-// 	recurrence_test(example_array, count);
-// }
-//
-// void	recurrence_with_int(int* example_array, int count)
-// {
-// 	if (count > 10) 
-// 		return ;
-// 	printf("recurrence count %d\n", count);
-// 	++count;
-// 	recurrence_with_int(example_array, count);
-// }
+void	recurrence_test(int* example_array, int* count)
+{
+	if (*count > 10) 
+		return ;
+	printf("recurrence count %d\n", *count);
+	++*count;
+	recurrence_test(example_array, count);
+}
+
+void	recurrence_with_int(int* example_array, int count)
+{
+	if (count > 10) 
+		return ;
+	printf("recurrence count %d\n", count);
+	++count;
+	recurrence_with_int(example_array, count);
+}
 
 void	read_nbinfo(t_nbinfo	nbinfo)
 {
@@ -67,17 +67,8 @@ void	ft_radix(t_stack stack_a)
 	t_stack	stack_b;
 	t_nbinfo	nbinfo;
 
-	// int pouio = 0;
-	// recurrence_test(NULL, &pouio);
-	// printf("nbinfo %p", nbinfo.tab);
-	// int pui = 0;
-	// recurrence_with_int(NULL, pui);
-
-//	printf("pouio = %d; pui = %d\n", pouio, pui);
-
 	printf("\033[0;35mSéparation des unités du chiffre :\033[0m\n");
 	nbinfo = ft_unit(stack_a.tab[0]);
-	read_nbinfo(nbinfo);
 	stack_b = init_stack_b(&stack_a);
 
 	//pa(&stack_a, &stack_b);

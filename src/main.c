@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
  	printf("\033[0;31mStack A en tableau:\033[0m\n");
  	for (int i = 0; i < stacktab_a.len; i++)
  	{
- 		printf("%d ", stacktab_a.tab[i]);
+ 		printf("%d\n", stacktab_a.tab[i]);
  	}
  	printf("\n");
  	ft_radix(stacktab_a);
