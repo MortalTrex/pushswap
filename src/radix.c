@@ -1,23 +1,5 @@
 #include "../include/push_swap.h"
 
-void	recurrence_test(int* example_array, int* count)
-{
-	if (*count > 10) 
-		return ;
-	printf("recurrence count %d\n", *count);
-	++*count;
-	recurrence_test(example_array, count);
-}
-
-void	recurrence_with_int(int* example_array, int count)
-{
-	if (count > 10) 
-		return ;
-	printf("recurrence count %d\n", count);
-	++count;
-	recurrence_with_int(example_array, count);
-}
-
 void	read_nbinfo(t_nbinfo	nbinfo)
 {
 	int	i;
@@ -62,18 +44,28 @@ t_nbinfo	ft_unit(int	nb)
 	return (nbinfo);
 }
 
+void	sort_three_elements(t_stack *stack_a)
+{
+	if (stack_a->tab[2] != 2)
+	{
+		if (stack_a->tab[0] == 2)
+			rab(stack_a, 0);
+		else
+			rrab(stack_a, 0);
+	}
+	if (stack_a->tab[0] > stack_a->tab[1])
+		sa(stack_a, true);
+}
+
 void	ft_radix(t_stack stack_a)
 {
 	t_stack	stack_b;
 	t_nbinfo	nbinfo;
 
-	printf("\033[0;35mSéparation des unités du chiffre :\033[0m\n");
 	nbinfo = ft_unit(stack_a.tab[0]);
 	stack_b = init_stack_b(&stack_a);
 
-	//pa(&stack_a, &stack_b);
-	//rab(&stack_a, 0);
-	//rrab(stack_a, 0);
+	sort_three_elements(&stack_a);
 	
 	free(stack_b.tab);
 	free(nbinfo.tab);
