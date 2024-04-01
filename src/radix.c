@@ -1,5 +1,6 @@
 #include "../include/push_swap.h"
 
+/*
 void	read_nbinfo(t_nbinfo	nbinfo)
 {
 	int	i;
@@ -43,6 +44,7 @@ t_nbinfo	ft_unit(int	nb)
 	nbinfo.len = i + 1;
 	return (nbinfo);
 }
+*/
 
 void	sort_three_elements(t_stack *stack_a)
 {
@@ -60,18 +62,15 @@ void	sort_three_elements(t_stack *stack_a)
 void	ft_radix(t_stack stack_a)
 {
 	t_stack	stack_b;
-	t_nbinfo	nbinfo;
+	//t_nbinfo	nbinfo;
 
-	nbinfo = ft_unit(stack_a.tab[0]);
+	//nbinfo = ft_unit(stack_a.tab[0]);
 	stack_b = init_stack_b(&stack_a);
 
 	sort_three_elements(&stack_a);
 	
 	free(stack_b.tab);
-	free(nbinfo.tab);
+	//free(nbinfo.tab);
 	printf("\033[0;33mAprès le radix :\033[0m\n");
- 	for (int i = 0; i < stack_a.len; i++)
- 	{
- 		printf("%d\n", stack_a.tab[i]);
- 	}
+	print_tab(stack_a);
 }

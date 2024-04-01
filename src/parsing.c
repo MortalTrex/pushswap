@@ -9,6 +9,18 @@ void print_stack(t_stack_node *stack)
 	}
 }
 
+void	print_tab(t_stack	*stacktab)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacktab.len)
+	{
+		printf("%d\n", stacktab.tab[i]);
+		i++;
+	}
+}
+
 static long	ft_atol(t_stack_node **stack, const char *s) 
 {
 	long	result;

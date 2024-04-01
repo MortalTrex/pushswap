@@ -52,6 +52,8 @@ void	free_stack(t_stack_node **stack);
 void	free_errors(t_stack_node **stack_a);
 
 //VERIF
+
+void	print_tab(t_stack	*stacktab);
 bool	ft_verifdouble(t_stack_node *stack_a, int numbers);
 bool	ft_verifsyntax(char *argv);
 bool ft_issort(t_stack stacktab);
