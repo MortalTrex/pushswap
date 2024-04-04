@@ -46,6 +46,25 @@ t_nbinfo	ft_unit(int	nb)
 }
 */
 
+t_stack	create_index(t_stack	*stacktab)
+{
+	t_stack	result;
+	int	i;
+	int	counter;
+
+	i = 0;
+	result.tab = malloc(sizeof(int) * stacktab->len);
+	if (!result.tab)
+		exit(1);
+	result.len = stacktab->len;
+	while (i < stacktab->len)
+	{
+		result.tab[i] = 1;
+		i++;
+	}
+	return(result);
+}
+
 void	sort_three_elements(t_stack *stack_a)
 {
 	if (stack_a->tab[2] != 2)
@@ -67,10 +86,11 @@ void	ft_radix(t_stack stack_a)
 	//nbinfo = ft_unit(stack_a.tab[0]);
 	stack_b = init_stack_b(&stack_a);
 
-	sort_three_elements(&stack_a);
+	stack_a = create_index(&stack_a);
+	//sort_three_elements(&stack_a);
 	
 	free(stack_b.tab);
 	//free(nbinfo.tab);
 	printf("\033[0;33mAprès le radix :\033[0m\n");
-	print_tab(stack_a);
+	print_tab(&stack_a);
 }
