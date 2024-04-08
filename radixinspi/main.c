@@ -61,7 +61,6 @@ void	radix_sort(t_stacks *s)
 		push("pa", s);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_stacks	*s;
