@@ -20,6 +20,19 @@ typedef struct s_stacks
 }			t_stacks;
 
 
+static void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j)
+{
+	while (b_size-- && j <= bit_size && !is_array_sorted(s))
+	{
+		if (((s->b[0] >> j) & 1) == 0)
+			rotate(s->b, s->b_size, "up", "b");
+		else
+			push("pa", s);
+	}
+	if (is_array_sorted(s))
+		while (s->b_size != 0)
+			push("pa", s);
+}
 
 void	radix_sort(t_stacks *s)
 {
@@ -47,6 +60,7 @@ void	radix_sort(t_stacks *s)
 	while (s->b_size != 0)
 		push("pa", s);
 }
+
 
 int	main(int argc, char **argv)
 {

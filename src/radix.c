@@ -68,46 +68,46 @@ void	sort_five_elements(t_stack	*stack_a, t_stack	*stack_b)
 	rab(stack_a, 0);
 }
 
-static void	radix_sort_stack_b(t_stack	*stack_a, t_stack	*stack_b, int b_size, int bit_size, int j)
+static void	radix_sort_stack_b(t_stack	*stack_a, t_stack	*stack_b, int bit_size, int j)
 {
-	while (b_size-- && j <= bit_size && !is_array_sorted(s))
+	int	size_b = stack_b->len;
+	while (size_b-- && j <= bit_size && !ft_issort(*stack_a))
 	{
 		if (((stack_b->tab[0] >> j) & 1) == 0)
 			rab(stack_b, 0);
 		else
 			pa(stack_a, stack_b);
 	}
-	if (is_array_sorted(s))
-		while (s->b_size != 0)
+	if (ft_issort(*stack_a))
+		while (size_b != 0)
 			pa(stack_a, stack_b);
 }
 
 void	radix_sort(t_stack	*stack_a, t_stack	*stack_b)
 {
 	int	bit_size;
-	int	a_size;
+	int	size;
 	int	j;
 
 	bit_size = 0;
 	size = stack_a->len;
 	while (size > 1 && ++bit_size)
-		size /= 2;
+		size = size / 2;
 	j = -1;
 	while (++j <= bit_size)
 	{
 		size = stack_a->len;
-		while (size-- && !ft_issort(stack_a))
+		while (size-- && !ft_issort(*stack_a))
 		{
 			if (((stack_a->tab[0] >> j) & 1) == 0)
 				pb(stack_a, stack_b);
 			else
 				rab(stack_a, 0);
 		}
-		radix_sort_stack_b(s, s->b_size, bit_size, j + 1);
+		radix_sort_stack_b(stack_a, stack_b, bit_size, j + 1);
 	}
-	while (s->b_size != 0)
+	while (stack_b->len != 0)
 		pa(stack_a, stack_b);
-
 }
 
 void	ft_radix(t_stack stack_a)
