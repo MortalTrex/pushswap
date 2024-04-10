@@ -119,7 +119,7 @@ void	ft_radix(t_stack stack_a)
 {
 	t_stack	stack_b;
 
-	stack_b = init_stack_b(&stack_a);
+	stack_b = init_stack_b();
 	stack_a = create_index(&stack_a);
 	if	(stack_a.len == 3)
 		sort_three_elements(&stack_a);
@@ -129,7 +129,7 @@ void	ft_radix(t_stack stack_a)
 		sort_five_elements(&stack_a, &stack_b);
 	if	(stack_a.len == 6)
 	{
-		printf("Longueur de b : %d\n", stack_b.len);
+		printf("Premiere Longueur de b : %d\n", stack_b.len);
 		pb(&stack_a, &stack_b);
 		printf("Longueur de b : %d\n", stack_b.len);
 		pa(&stack_a, &stack_b);

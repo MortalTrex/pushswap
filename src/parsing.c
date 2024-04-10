@@ -88,20 +88,15 @@ void init_stack_a(t_stack_node **stack_a, char **argv)
 	}
 }
 
-t_stack	init_stack_b(t_stack *stack_a)
+t_stack	init_stack_b(void)
 {
 	t_stack	stack_b;
 	int	i;
 
 	i = 0;
-	stack_b.tab = malloc(sizeof(int) * stack_a->len);
+	stack_b.tab = malloc(sizeof(int) * 0);
 	if (!stack_b.tab)
 		exit(1);
-	stack_b.len = stack_a->len;
-	while(i < stack_b.len)
-	{
-		stack_b.tab[i] = 0;
-		i++;
-	}
+	stack_b.len = 0;
 	return(stack_b);
 }
