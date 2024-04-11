@@ -54,7 +54,7 @@ bool ft_issort(t_stack stacktab);
 
 //PARSING
 void init_stack_a(t_stack_node **stack_a, char **argv);
-t_stack	init_stack_b(t_stack *stack_a);
+t_stack	init_stack_b(void);
 
 //UTILS
 t_stack_node	*find_last(t_stack_node *stack);

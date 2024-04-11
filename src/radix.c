@@ -70,18 +70,19 @@ void	sort_five_elements(t_stack	*stack_a, t_stack	*stack_b)
 
 static void	radix_sort_stack_b(t_stack	*stack_a,	t_stack	*stack_b, int	b_size, int bit_size, int j)
 {
-	while (b_size-- && j <= bit_size && !ft_issort(*stack_a))
+	stack_b->len = b_size;
+	while (stack_b->len-- && j <= bit_size && !ft_issort(*stack_a))
 	{
 		if (((stack_b->tab[0] >> j) & 1) == 0)
 			rab(stack_b, 0);
 		else
 		{
 			pa(stack_a, stack_b);
-			printf("La longueur en else radix : %d\n", stack_b->len);
+			printf("La longueur  en else radix : %d\n et %d\n", stack_b->len, b_size);
 		}
 	}
 	if (ft_issort(*stack_a))
-		while (b_size != 0)
+		while (stack_b->len != 0)
 			pa(stack_a, stack_b);
 }
 
@@ -94,9 +95,9 @@ void	radix_sort(t_stack	*stack_a, t_stack	*stack_b)
 	bit_size = 0;
 	size = stack_a->len;
 	while (size > 1 && ++bit_size)
-		size = size / 2;
+		size /= 2;
 	j = -1;
-	while (j++ <= bit_size)
+	while (++j <= bit_size)
 	{
 		size = stack_a->len;
 		while (size-- && !ft_issort(*stack_a))
@@ -128,15 +129,7 @@ void	ft_radix(t_stack stack_a)
 	if	(stack_a.len == 5)
 		sort_five_elements(&stack_a, &stack_b);
 	if	(stack_a.len == 6)
-	{
-		printf("Premiere Longueur de b : %d\n", stack_b.len);
-		pb(&stack_a, &stack_b);
-		printf("Longueur de b : %d\n", stack_b.len);
-		pa(&stack_a, &stack_b);
-		pa(&stack_a, &stack_b);
-		pa(&stack_a, &stack_b);
-		printf("Longueur de b : %d\n", stack_b.len);
-	}
+		radix_sort(&stack_a, &stack_b);
 	//if	(stack_a.len > 6000)
 		//radix_sort(&stack_a, &stack_b);
 	free(stack_b.tab);
