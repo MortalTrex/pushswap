@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_pr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:02:45 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/02/26 14:02:47 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/04/12 17:47:14 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 		stack_b->tab[i] = stack_b->tab[i + 1];
 		i++;
 	}
-	ft_printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)

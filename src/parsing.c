@@ -1,33 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
+/*   Updated: 2024/04/12 18:17:28 by rbalazs          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-void print_stack(t_stack_node *stack)
-{
-	while (stack)
-	{
-		printf("%d\n", stack->nbr);
-		stack = stack->next;
-	}
-}
-
-void	print_tab(t_stack	*stacktab)
-{
-	int	i;
-
-	i = 0;
-	while (i < stacktab->len)
-	{
-		printf("%d\n", stacktab->tab[i]);
-		i++;
-	}
-}
-
-static long	ft_atol(t_stack_node **stack, const char *s) 
+static long	ft_atol(t_stack_node **stack, const char *s)
 {
 	long	result;
 	int		sign;
 
 	result = 0;
-	sign = 1; 
+	sign = 1;
 	while (*s == ' ' || *s == '\t' || *s == '\n' || \
 			*s == '\r' || *s == '\f' || *s == '\v')
 		s++;
@@ -48,19 +39,20 @@ static void	append_node(t_stack_node **stack, int number)
 {
 	t_stack_node	*node;	
 	t_stack_node	*last_node;
+
 	if (!stack)
 		return ;
 	node = malloc(sizeof(t_stack_node));
 	if (!node)
-		return ; 
+		return ;
 	node->next = NULL;
 	node->nbr = number;
-	if (!(*stack)) 
+	if (!(*stack))
 	{
-		*stack = node; 
+		*stack = node;
 		node->prev = NULL;
 	}
-	else 
+	else
 	{
 		last_node = find_last(*stack);
 		last_node->next = node;
@@ -68,10 +60,10 @@ static void	append_node(t_stack_node **stack, int number)
 	}
 }
 
-void init_stack_a(t_stack_node **stack_a, char **argv)
+void	init_stack_a(t_stack_node **stack_a, char **argv)
 {
 	long	number;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (argv[i])
@@ -92,9 +84,9 @@ t_stack	init_stack_b(void)
 {
 	t_stack	stack_b;
 
-	stack_b.tab = malloc(sizeof(int) * 0);
-	if (!stack_b.tab)
-		exit(1);
 	stack_b.len = 0;
-	return(stack_b);
+	stack_b.tab = malloc(sizeof(int) * stack_b.len);
+	if (!stack_b.tab)
+		exit (1);
+	return (stack_b);
 }

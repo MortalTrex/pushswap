@@ -44,7 +44,6 @@ void rrr(t_stack *stack_a, t_stack *stack_b);
 //FREE
 void	free_stack(t_stack_node **stack);
 void	free_errors(t_stack_node **stack_a);
-
 //VERIF
 
 void	print_tab(t_stack	*stacktab);
@@ -65,5 +64,9 @@ t_stack ft_hybrid_listotab(t_stack_node *stacklist);
 
 //RADIX
 void	ft_radix(t_stack stack_a);
+
+//PRINT
+void	print_stack(t_stack_node *stack);
+void	print_tab(t_stack	*stacktab);
 
 #endif
