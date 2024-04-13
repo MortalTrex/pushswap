@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-bool	ft_verifdouble(t_stack_node *stack_a, int number) 
+bool	ft_verifdouble(t_stack_node *stack_a, int number)
 {
 	while (stack_a)
 	{
@@ -23,7 +23,7 @@ bool	ft_verifdouble(t_stack_node *stack_a, int number)
 	return (false);
 }
 
-bool ft_issort(t_stack stacktab)
+bool	ft_issort(t_stack stacktab)
 {
 	int	i;
 
@@ -31,22 +31,22 @@ bool ft_issort(t_stack stacktab)
 	while (i < stacktab.len - 1)
 	{
 		if (stacktab.tab[i] > stacktab.tab[i + 1])
-			return(false);
+			return (false);
 		i++;
 	}
-	return(true);
+	return (true);
 }
 
-bool	ft_verifsyntax(char *argv) 
+bool	ft_verifsyntax(char *argv)
 {
-	if (!(*argv == '+'|| *argv == '-' || (*argv >= '0' && *argv <= '9'))) 
-		return (1);
-	if ((*argv == '+'|| *argv == '-') && !(argv[1] >= '0' && argv[1] <= '9')) 
-		return (1);
-	while (*++argv) 
+	if (!(*argv == '+' || *argv == '-' || (*argv >= '0' && *argv <= '9')))
+		return (true);
+	if ((*argv == '+' || *argv == '-') && !(argv[1] >= '0' && argv[1] <= '9'))
+		return (true);
+	while (*++argv)
 	{
-		if (!(*argv >= '0' && *argv <= '9')) 
-			return (1);
+		if (!(*argv >= '0' && *argv <= '9'))
+			return (true);
 	}
-	return (0);
+	return (false);
 }

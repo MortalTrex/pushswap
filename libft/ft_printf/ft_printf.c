@@ -34,7 +34,7 @@ int	ft_verif(char chr, int count, va_list args)
 		count++;
 	}
 	return (count);
-}	
+}
 
 int	ft_printf(const char *str, ...)
 {

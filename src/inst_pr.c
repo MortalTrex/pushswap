@@ -32,13 +32,14 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 		stack_b->tab[i] = stack_b->tab[i + 1];
 		i++;
 	}
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
-i = stack_b->len;
+	i = stack_b->len;
 	if (stack_a->len == 0)
 		return ;
 	while (i > 0)
