@@ -69,4 +69,11 @@ void					ft_radix(t_stack stack_a);
 void					print_stack(t_stack_node *stack);
 void					print_tab(t_stack *stacktab);
 
+// RADIX
+void	sort_three_elements(t_stack *stack_a);
+void	sort_four_elements(t_stack	*stack_a, t_stack	*stack_b);
+void	sort_five_elements(t_stack	*stack_a, t_stack	*stack_b);
+static void	radix_sort_stack_b(t_stack *stack_a, t_stack *stack_b, int b_size, int bit_size, int j);
+void	radix_sort(t_stack	*stack_a, t_stack	*stack_b);
+
 #endif

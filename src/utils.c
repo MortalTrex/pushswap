@@ -54,3 +54,32 @@ t_stack	ft_hybrid_listotab(t_stack_node *stacklist)
 	}
 	return (stacktab);
 }
+
+t_stack	create_index(t_stack	*stacktab, int count)
+{
+	t_stack	result;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	result.tab = malloc(sizeof(int) * stacktab->len);
+	if (!result.tab)
+		exit(1);
+	result.len = stacktab->len;
+	while (i < result.len)
+	{
+		while (j < result.len)
+		{
+			if (stacktab->tab[i] > stacktab->tab[j])
+				count++;
+			j++;
+		}
+		result.tab[i] = count;
+		count = 0;
+		j = 0;
+		i++;
+	}
+	return (result);
+}
+

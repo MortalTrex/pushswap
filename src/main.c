@@ -12,6 +12,27 @@
 
 #include "../include/push_swap.h"
 
+void	ft_radix(t_stack stack_a)
+{
+	t_stack	stack_b;
+
+	stack_b = init_stack_b();
+	stack_a = create_index(stack_a, 0);
+	if (stack_a.len == 3)
+		sort_three_elements(&stack_a);
+	if (stack_a.len == 4)
+		sort_four_elements(&stack_a, &stack_b);
+	if (stack_a.len == 5)
+		sort_five_elements(&stack_a, &stack_b);
+	if (stack_a.len > 5)
+		radix_sort(&stack_a, &stack_b);
+	free(stack_b.tab);
+	printf("\033[0;33mAprès le radix :\033[0m\n");
+	print_tab(&stack_a);
+	printf("Stack triée ?: %d\n", ft_issort(stack_a));
+	free(stack_a.tab);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;

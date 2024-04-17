@@ -12,36 +12,6 @@
 
 #include "../include/push_swap.h"
 
-t_stack	create_index(t_stack	*stacktab)
-{
-	t_stack	result;
-	int		i;
-	int		j;
-	int		count;
-
-	i = 0;
-	j = 0;
-	count = 0;
-	result.tab = malloc(sizeof(int) * stacktab->len);
-	if (!result.tab)
-		exit(1);
-	result.len = stacktab->len;
-	while (i < result.len)
-	{
-		while (j < result.len)
-		{
-			if (stacktab->tab[i] > stacktab->tab[j])
-				count++;
-			j++;
-		}
-		result.tab[i] = count;
-		count = 0;
-		j = 0;
-		i++;
-	}
-	return (result);
-}
-
 void	sort_three_elements(t_stack *stack_a)
 {
 	if (stack_a->tab[2] != 2)
@@ -114,25 +84,4 @@ void	radix_sort(t_stack	*stack_a, t_stack	*stack_b)
 	}
 	while (stack_b->len != 0)
 		pa(stack_a, stack_b);
-}
-
-void	ft_radix(t_stack stack_a)
-{
-	t_stack	stack_b;
-
-	stack_b = init_stack_b();
-	stack_a = create_index(&stack_a);
-	if (stack_a.len == 3)
-		sort_three_elements(&stack_a);
-	if (stack_a.len == 4)
-		sort_four_elements(&stack_a, &stack_b);
-	if (stack_a.len == 5)
-		sort_five_elements(&stack_a, &stack_b);
-	if (stack_a.len > 5)
-		radix_sort(&stack_a, &stack_b);
-	free(stack_b.tab);
-	printf("\033[0;33mAprès le radix :\033[0m\n");
-	print_tab(&stack_a);
-	printf("Stack triée ?: %d\n", ft_issort(stack_a));
-	free(stack_a.tab);
 }
