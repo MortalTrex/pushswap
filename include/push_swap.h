@@ -58,6 +58,7 @@ t_stack					init_stack_b(void);
 // UTILS
 t_stack_node			*find_last(t_stack_node *stack);
 int						ft_stack_len(t_stack_node *stack);
+t_stack					create_index(t_stack *stacktab, int count);
 
 // CONVERSION
 t_stack					ft_hybrid_listotab(t_stack_node *stacklist);
@@ -70,10 +71,11 @@ void					print_stack(t_stack_node *stack);
 void					print_tab(t_stack *stacktab);
 
 // RADIX
-void	sort_three_elements(t_stack *stack_a);
-void	sort_four_elements(t_stack	*stack_a, t_stack	*stack_b);
-void	sort_five_elements(t_stack	*stack_a, t_stack	*stack_b);
-static void	radix_sort_stack_b(t_stack *stack_a, t_stack *stack_b, int b_size, int bit_size, int j);
-void	radix_sort(t_stack	*stack_a, t_stack	*stack_b);
+void					sort_three_elements(t_stack *stack_a);
+void					sort_four_elements(t_stack *stack_a, t_stack *stack_b);
+void					sort_five_elements(t_stack *stack_a, t_stack *stack_b);
+static void				radix_sort_stack_b(t_stack *stack_a, t_stack *stack_b,
+							int b_size, int bit_size, int j);
+void					radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif

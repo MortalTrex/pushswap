@@ -82,4 +82,3 @@ t_stack	create_index(t_stack	*stacktab, int count)
 	}
 	return (result);
 }
-
