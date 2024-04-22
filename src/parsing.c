@@ -80,12 +80,13 @@ void	init_stack_a(t_stack_node **stack_a, char **argv)
 	}
 }
 
-t_stack	init_stack_b(void)
+t_stack	init_stack_b(t_stack stack_a)
 {
 	t_stack	stack_b;
 
 	stack_b.len = 0;
-	stack_b.tab = malloc(sizeof(int) * stack_b.len);
+	printf("VALEUR : %d\n", stack_a.len);
+	stack_b.tab = malloc(stack_a.len * sizeof * stack_b.tab);
 	if (!stack_b.tab)
 		exit (1);
 	return (stack_b);

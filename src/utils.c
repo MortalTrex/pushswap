@@ -34,7 +34,7 @@ int	ft_stack_len(t_stack_node *stack)
 	return (count);
 }
 
-t_stack	ft_hybrid_listotab(t_stack_node *stacklist)
+t_stack	ft_hybrid_listtotab(t_stack_node *stacklist)
 {
 	int		i;
 	int		sizelist;
