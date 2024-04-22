@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/12 18:17:28 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/04/22 21:19:55 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,40 @@ void	init_stack_a(t_stack_node **stack_a, char **argv)
 		i++;
 	}
 }
-
+/*
 t_stack	init_stack_b(t_stack stack_a)
 {
 	t_stack	stack_b;
 
 	stack_b.len = 0;
-	printf("VALEUR : %d\n", stack_a.len);
 	stack_b.tab = malloc(stack_a.len * sizeof * stack_b.tab);
 	if (!stack_b.tab)
 		exit (1);
 	return (stack_b);
+}
+*/
+
+void	handle_error_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	free(stack_a->tab);
+	free(stack_b->tab);
+	free(stack_a);
+	free(stack_b);
+	exit(EXIT_FAILURE);
+}
+
+
+t_stack	init_stack_b(t_stack *stack_a)
+{
+	t_stack	*stack_b;
+	
+	stack_b = malloc(sizeof(t_stack));
+	if (!stack_b)
+		handle_error_stack(stack_a, stack_b);
+	stack_b->tab = malloc(stack_a->len * sizeof(int));
+	if (!stack_b->tab)
+		handle_error_stack(stack_a, stack_b);
+	stack_b->len = 0;
+
+	return (*stack_b);
 }

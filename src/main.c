@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:18 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/12 18:17:20 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/04/22 21:12:03 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_radix(t_stack stack_a)
 {
 	t_stack	stack_b;
 
-	stack_b = init_stack_b(stack_a);
+	stack_b = init_stack_b(&stack_a);
 	stack_a = create_index(&stack_a, 0);
 	if (stack_a.len == 3)
 		sort_three_elements(&stack_a);
