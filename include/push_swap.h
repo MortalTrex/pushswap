@@ -42,8 +42,8 @@ void					rrab(t_stack *stack_a, int stack);
 void					rrr(t_stack *stack_a, t_stack *stack_b);
 
 // FREE
-void					free_stacknode(t_stack_node **stack);
-void	handle_error_stack(t_stack *stack_a, t_stack *stack_b);
+void					free_stacknode(t_stack_node **stack, int error);
+void					handle_error_stack(t_stack *stack_a, t_stack *stack_b);
 
 // VERIF
 void					print_tab(t_stack *stacktab);
@@ -53,7 +53,7 @@ bool					ft_issort(t_stack stacktab);
 
 // PARSING
 void					init_stack_a(t_stack_node **stack_a, char **argv);
-t_stack					init_stack_b(t_stack *stack_a);
+void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
 
 // UTILS
 t_stack_node			*find_last(t_stack_node *stack);

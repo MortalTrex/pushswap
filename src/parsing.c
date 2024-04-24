@@ -29,7 +29,7 @@ static long	ft_atol(t_stack_node **stack, const char *s)
 		s++;
 	}
 	if (!ft_isdigit(*s))
-		free_stacknode(stack);
+		free_stacknode(stack, 1);
 	while (ft_isdigit(*s))
 		result = result * 10 + (*s++ - '0');
 	return (result * sign);
@@ -37,7 +37,7 @@ static long	ft_atol(t_stack_node **stack, const char *s)
 
 static void	append_node(t_stack_node **stack, int number)
 {
-	t_stack_node	*node;	
+	t_stack_node	*node;
 	t_stack_node	*last_node;
 
 	if (!stack)
@@ -69,28 +69,21 @@ void	init_stack_a(t_stack_node **stack_a, char **argv)
 	while (argv[i])
 	{
 		if (ft_verifsyntax(argv[i]))
-			free_stacknode(stack_a);
+			free_stacknode(stack_a, 1);
 		number = ft_atol(stack_a, argv[i]);
 		if (number < -2147483648 || number > 2147483647)
-			free_stacknode(stack_a);
+			free_stacknode(stack_a, 1);
 		if (ft_verifdouble(*stack_a, (int)number) == true)
-			free_stacknode(stack_a);
+			free_stacknode(stack_a, 1);
 		append_node(stack_a, (int)number);
 		i++;
 	}
 }
 
-t_stack	init_stack_b(t_stack *stack_a)
+void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*stack_b;
-	
-	stack_b = malloc(sizeof(t_stack));
-	if (!stack_b)
-		handle_error_stack(stack_a, stack_b);
 	stack_b->tab = malloc(stack_a->len * sizeof(int));
 	if (!stack_b->tab)
 		handle_error_stack(stack_a, stack_b);
 	stack_b->len = 0;
-
-	return (*stack_b);
 }

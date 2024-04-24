@@ -16,7 +16,7 @@ void	ft_radix(t_stack stack_a)
 {
 	t_stack	stack_b;
 
-	stack_b = init_stack_b(&stack_a);
+	init_stack_b(&stack_a, &stack_b);
 	stack_a = create_index(&stack_a, 0);
 	if (stack_a.len == 3)
 		sort_three_elements(&stack_a);
@@ -47,9 +47,8 @@ int	main(int argc, char **argv)
 		add = 0;
 	}
 	init_stack_a(&stack_a, argv + add);
-	//free(argv);
 	stacktab_a = ft_hybrid_listtotab(stack_a);
-	free_stacknode(&stack_a);
-	//ft_radix(stacktab_a);
+	free_stacknode(&stack_a, 0);
+	ft_radix(stacktab_a);
 	free(stacktab_a.tab);
 }
