@@ -47,7 +47,9 @@ int	main(int argc, char **argv)
 		add = 0;
 	}
 	init_stack_a(&stack_a, argv + add);
+	//free(argv);
 	stacktab_a = ft_hybrid_listtotab(stack_a);
-	free_stack(&stack_a);
-	ft_radix(stacktab_a);
+	free_stacknode(&stack_a);
+	//ft_radix(stacktab_a);
+	free(stacktab_a.tab);
 }

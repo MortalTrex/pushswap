@@ -42,8 +42,8 @@ void					rrab(t_stack *stack_a, int stack);
 void					rrr(t_stack *stack_a, t_stack *stack_b);
 
 // FREE
-void					free_stack(t_stack_node **stack);
-void					free_errors(t_stack_node **stack_a);
+void					free_stacknode(t_stack_node **stack);
+void	handle_error_stack(t_stack *stack_a, t_stack *stack_b);
 
 // VERIF
 void					print_tab(t_stack *stacktab);

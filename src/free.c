@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void	free_stack(t_stack_node **stack)
+void	free_stacknode(t_stack_node **stack)
 {
 	t_stack_node	*tmp;
 	t_stack_node	*current;
@@ -28,11 +28,15 @@ void	free_stack(t_stack_node **stack)
 		current = tmp;
 	}
 	*stack = NULL;
+	//ft_printf("Error\n");
+	//exit(1);
 }
 
-void	free_errors(t_stack_node **stack_a)
+void	handle_error_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	free_stack(stack_a);
-	printf("Error\n");
-	exit(1);
+	free(stack_a->tab);
+	free(stack_b->tab);
+	free(stack_a);
+	free(stack_b);
+	exit(EXIT_FAILURE);
 }
