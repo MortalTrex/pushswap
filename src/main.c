@@ -35,8 +35,8 @@ void	ft_radix(t_stack stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_stack_node	*stack_a;
-	t_stack			stacktab_a;
+	//t_stack_node	*stack_a;
+	t_stack			stack_a;
 	int				add;
 
 	stack_a = NULL;
@@ -46,9 +46,10 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], ' ');
 		add = 0;
 	}
-	init_stack_a(&stack_a, argv + add);
-	stacktab_a = ft_hybrid_listtotab(stack_a);
-	free_stacknode(&stack_a, 0);
+	init_stack_a
+	ft_parsing(&stack_a, argv + add);
+	//tacktab_a = ft_hybrid_listtotab(stack_a);
+	//free_stacknode(&stack_a, 0);
 	ft_radix(stacktab_a);
 	free(stacktab_a.tab);
 }

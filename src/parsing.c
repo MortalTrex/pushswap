@@ -12,26 +12,26 @@
 
 #include "../include/push_swap.h"
 
-static long	ft_atol(t_stack_node **stack, const char *s)
+static long	ft_atol(t_stack_node **stack, const char *str)
 {
 	long	result;
 	int		sign;
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
+	while (*str == ' ' || *str == '\t' || *str == '\n' || \
+			*str == '\r' || *str == '\f' || *str == '\v')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (*s == '-')
+		if (*str == '-')
 			sign = -1;
-		s++;
+		str++;
 	}
-	if (!ft_isdigit(*s))
+	if (!ft_isdigit(*str))
 		free_stacknode(stack, 1);
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
+	while (ft_isdigit(*str))
+		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
 
@@ -60,7 +60,7 @@ static void	append_node(t_stack_node **stack, int number)
 	}
 }
 
-void	init_stack_a(t_stack_node **stack_a, char **argv)
+void	ft_parsing(t_stack_node **stack_a, char **argv)
 {
 	long	number;
 	int		i;
@@ -68,6 +68,8 @@ void	init_stack_a(t_stack_node **stack_a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
+		if (antilonglong(argv[i]) == true)
+			free_stacknode(stack_a, 1);
 		if (ft_verifsyntax(argv[i]))
 			free_stacknode(stack_a, 1);
 		number = ft_atol(stack_a, argv[i]);

@@ -35,7 +35,7 @@ void	free_stacknode(t_stack_node **stack, int error)
 	}
 }
 
-void	handle_error_stack(t_stack *stack_a, t_stack *stack_b)
+void	free_error(t_stack *stack_a, t_stack *stack_b, int	error)
 {
 	if (stack_a != NULL)
 	{
@@ -47,5 +47,9 @@ void	handle_error_stack(t_stack *stack_a, t_stack *stack_b)
 		free(stack_b->tab);
 		free(stack_b);
 	}
-	exit(1);
+	if (error == 1)
+	{
+		ft_printf("Error\n");
+		exit(1);
+	}
 }

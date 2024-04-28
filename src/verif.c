@@ -50,3 +50,17 @@ bool	ft_verifsyntax(char *argv)
 	}
 	return (false);
 }
+
+bool	antilonglong(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i >= 10)
+			return(true);
+		i++;
+	}
+	return(false);
+}
