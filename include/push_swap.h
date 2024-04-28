@@ -77,6 +77,4 @@ void					sort_four_elements(t_stack *stack_a, t_stack *stack_b);
 void					sort_five_elements(t_stack *stack_a, t_stack *stack_b);
 void					radix_sort(t_stack *stack_a, t_stack *stack_b);
 
-bool 	anti_longlong(int number);
-
 #endif
