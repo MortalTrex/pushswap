@@ -26,11 +26,11 @@ void	ft_radix(t_stack stack_a)
 		sort_five_elements(&stack_a, &stack_b);
 	if (stack_a.len > 5)
 		radix_sort(&stack_a, &stack_b);
-	free(stack_b.tab);
+	//free(stack_b.tab);
 	printf("\033[0;33mAprès le radix :\033[0m\n");
 	print_tab(&stack_a);
 	printf("Stack triée ?: %d\n", ft_issort(stack_a));
-	free_error(&stack_a, &stack_b, 1);
+	free_error(&stack_a, &stack_b, 0);
 }
 
 int	main(int argc, char **argv)
@@ -47,4 +47,5 @@ int	main(int argc, char **argv)
 	}
 	ft_parsing(&stack_a, argv + add);
 	ft_radix(stack_a);
+	exit(1);
 }

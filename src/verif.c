@@ -12,18 +12,25 @@
 
 #include "../include/push_swap.h"
 
-/*
-bool	ft_verifdouble(t_stack *stack_a, int number)
+bool	ft_verifdouble(t_stack *stack_a)
 {
-	while (stack_a)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (stack_a->tab[i])
 	{
-		if (stack_a->nbr == number)
-			return (true);
-		stack_a = stack_a->next;
+		j = i + 1;
+		while (stack_a->tab[j])
+		{
+			if (stack_a->tab[i] == stack_a->tab[j])
+				return (true);
+			j++;
+		}
+		i++;
 	}
 	return (false);
 }
-*/
 
 bool	ft_issort(t_stack stacktab)
 {

@@ -29,7 +29,7 @@ static long	ft_atol(t_stack *stack, const char *str)
 		str++;
 	}
 	if (!ft_isdigit(*str))
-		free(stack);
+		free_error_a(stack);
 	while (ft_isdigit(*str))
 		result = result * 10 + (*str++ - '0');
 	return (result * sign);
@@ -39,31 +39,27 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 {
 	long	number;
 	int		i;
+	int		len;
 
-	stack_a->tab = malloc(sizeof(int) * 3);
-	stack_a->len = 3; 
+	len = ft_stack_a_len(argv);
+	printf("longueur : %d\n", len);
+	stack_a->tab = malloc(sizeof(int) * len);
+	if (!stack_a->tab)
+		free_error_a(stack_a);
+	stack_a->len = len; 
 	i = 0;
 	while (argv[i])
 	{
 		if (antilonglong(argv[i]) == true)
-			exit(1);
+			free_error_a(stack_a);
 		if (ft_verifsyntax(argv[i]))
-			exit(1);
+			free_error_a(stack_a);
 		number = ft_atol(stack_a, argv[i]);
 		if (number < -2147483648 || number > 2147483647)
-			exit(1);
-		//if (ft_verifdouble(stack_a, (int)number) == true)
-			//exit(1);
-		//append_node(stack_a, (int)number);
+			free_error_a(stack_a);	
 		stack_a->tab[i] = number;
+		if (ft_verifdouble(stack_a) == true)
+			free_error_a(stack_a);
 		i++;
 	}
-}
-
-void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
-{
-	stack_b->tab = malloc(stack_a->len * sizeof(int));
-	if (!stack_b->tab)
-		free_error(stack_a, stack_b, 1);
-	stack_b->len = 0;
 }

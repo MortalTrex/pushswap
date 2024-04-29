@@ -12,6 +12,24 @@
 
 #include "../include/push_swap.h"
 
+int	ft_stack_a_len(char **argv)
+{
+	int len;
+
+	len = 0;
+	while(argv[len])
+		len++;
+	return (len);
+}
+
+void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
+{
+	stack_b->tab = malloc(stack_a->len * sizeof(int));
+	if (!stack_b->tab)
+		free_error(stack_a, stack_b, 1);
+	stack_b->len = 0;
+}
+
 void	print_tab(t_stack	*stacktab)
 {
 	int	i;

@@ -12,18 +12,19 @@
 
 #include "../include/push_swap.h"
 
+void	free_error_a(t_stack *stack_a)
+{
+	free(stack_a->tab);
+	ft_printf("Error\n");
+	exit(1);
+}
+
 void	free_error(t_stack *stack_a, t_stack *stack_b, int	error)
 {
 	if (stack_a != NULL)
-	{
 		free(stack_a->tab);
-		free(stack_a);
-	}
 	if (stack_b != NULL)
-	{
 		free(stack_b->tab);
-		free(stack_b);
-	}
 	if (error == 1)
 	{
 		ft_printf("Error\n");
