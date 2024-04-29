@@ -12,6 +12,18 @@
 
 #include "../include/push_swap.h"
 
+void	print_tab(t_stack	*stacktab)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacktab->len)
+	{
+		printf("%d\n", stacktab->tab[i]);
+		i++;
+	}
+}
+
 t_stack	create_index(t_stack	*stacktab, int count)
 {
 	t_stack	result;
