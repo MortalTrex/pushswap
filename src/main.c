@@ -30,12 +30,11 @@ void	ft_radix(t_stack stack_a)
 	printf("\033[0;33mAprès le radix :\033[0m\n");
 	print_tab(&stack_a);
 	printf("Stack triée ?: %d\n", ft_issort(stack_a));
-	free(stack_a.tab);
+	free_error(&stack_a, &stack_b, 1);
 }
 
 int	main(int argc, char **argv)
 {
-	//t_stack_node	*stack_a;
 	t_stack			stack_a;
 	int				add;
 
@@ -46,10 +45,6 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], ' ');
 		add = 0;
 	}
-	//init_stack_a
-	ft_parsing(stack_a, argv + add);
-	//tacktab_a = ft_hybrid_listtotab(stack_a);
-	//free_stacknode(&stack_a, 0);
+	ft_parsing(&stack_a, argv + add);
 	ft_radix(stack_a);
-	free(stack_a.tab);
 }

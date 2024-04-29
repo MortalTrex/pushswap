@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-static long	ft_atol(t_stack_node **stack, const char *str)
+static long	ft_atol(t_stack *stack, const char *str)
 {
 	long	result;
 	int		sign;
@@ -29,55 +29,33 @@ static long	ft_atol(t_stack_node **stack, const char *str)
 		str++;
 	}
 	if (!ft_isdigit(*str))
-		free_stacknode(stack, 1);
+		free(stack);
 	while (ft_isdigit(*str))
 		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
 
-static void	append_node(t_stack_node **stack, int number)
-{
-	t_stack_node	*node;
-	t_stack_node	*last_node;
-
-	if (!stack)
-		return ;
-	node = malloc(sizeof(t_stack_node));
-	if (!node)
-		return ;
-	node->next = NULL;
-	node->nbr = number;
-	if (!(*stack))
-	{
-		*stack = node;
-		node->prev = NULL;
-	}
-	else
-	{
-		last_node = find_last(*stack);
-		last_node->next = node;
-		node->prev = last_node;
-	}
-}
-
-void	ft_parsing(t_stack_node **stack_a, char **argv)
+void	ft_parsing(t_stack *stack_a, char **argv)
 {
 	long	number;
 	int		i;
 
+	stack_a->tab = malloc(sizeof(int) * 3);
+	stack_a->len = 3; 
 	i = 0;
 	while (argv[i])
 	{
 		if (antilonglong(argv[i]) == true)
-			free_stacknode(stack_a, 1);
+			exit(1);
 		if (ft_verifsyntax(argv[i]))
-			free_stacknode(stack_a, 1);
+			exit(1);
 		number = ft_atol(stack_a, argv[i]);
 		if (number < -2147483648 || number > 2147483647)
-			free_stacknode(stack_a, 1);
-		if (ft_verifdouble(*stack_a, (int)number) == true)
-			free_stacknode(stack_a, 1);
-		append_node(stack_a, (int)number);
+			exit(1);
+		//if (ft_verifdouble(stack_a, (int)number) == true)
+			//exit(1);
+		//append_node(stack_a, (int)number);
+		stack_a->tab[i] = number;
 		i++;
 	}
 }
@@ -86,6 +64,6 @@ void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_b->tab = malloc(stack_a->len * sizeof(int));
 	if (!stack_b->tab)
-		handle_error_stack(stack_a, stack_b);
+		free_error(stack_a, stack_b, 1);
 	stack_b->len = 0;
 }

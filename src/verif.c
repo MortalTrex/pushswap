@@ -12,7 +12,8 @@
 
 #include "../include/push_swap.h"
 
-bool	ft_verifdouble(t_stack_node *stack_a, int number)
+/*
+bool	ft_verifdouble(t_stack *stack_a, int number)
 {
 	while (stack_a)
 	{
@@ -22,6 +23,7 @@ bool	ft_verifdouble(t_stack_node *stack_a, int number)
 	}
 	return (false);
 }
+*/
 
 bool	ft_issort(t_stack stacktab)
 {

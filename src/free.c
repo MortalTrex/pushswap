@@ -12,29 +12,6 @@
 
 #include "../include/push_swap.h"
 
-void	free_stacknode(t_stack_node **stack, int error)
-{
-	t_stack_node	*tmp;
-	t_stack_node	*current;
-
-	if (!stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		current->nbr = 0;
-		free(current);
-		current = tmp;
-	}
-	*stack = NULL;
-	if (error == 1)
-	{
-		ft_printf("Error\n");
-		exit(1);
-	}
-}
-
 void	free_error(t_stack *stack_a, t_stack *stack_b, int	error)
 {
 	if (stack_a != NULL)
