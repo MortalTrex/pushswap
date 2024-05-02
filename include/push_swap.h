@@ -39,8 +39,7 @@ void					free_error(t_stack *stack_a, t_stack *stack_b, int error);
 void					free_error_a(t_stack *stack_a);
 
 // VERIF
-void					print_tab(t_stack *stacktab);
-//bool					ft_verifdouble(t_stack_node *stack_a, int numbers);
+void					print_tab(t_stack *stack);
 bool					ft_verifsyntax(char *argv);
 bool					ft_issort(t_stack stacktab);
 bool					antilonglong(char *str);
@@ -51,14 +50,11 @@ void					ft_parsing(t_stack *stack_a, char **argv);
 
 // UTILS 
 t_stack					create_index(t_stack *stacktab, int count);
-void						init_stack_b(t_stack *stack_a, t_stack *stack_b);
-int							ft_stack_a_len(char **argv);
+void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
+int						ft_stack_a_len(char **argv);
 
 // RADIX
 void					ft_radix(t_stack stack_a);
-
-// PRINT
-void					print_tab(t_stack *stacktab);
 
 // RADIX
 void					sort_three_elements(t_stack *stack_a);

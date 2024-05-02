@@ -46,7 +46,7 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 	stack_a->tab = malloc(sizeof(int) * len);
 	if (!stack_a->tab)
 		free_error_a(stack_a);
-	stack_a->len = len; 
+	stack_a->len = len;
 	i = 0;
 	while (argv[i])
 	{
@@ -56,10 +56,10 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 			free_error_a(stack_a);
 		number = ft_atol(stack_a, argv[i]);
 		if (number < -2147483648 || number > 2147483647)
-			free_error_a(stack_a);	
-		stack_a->tab[i] = number;
-		if (ft_verifdouble(stack_a) == true)
 			free_error_a(stack_a);
+		stack_a->tab[i] = number;
 		i++;
 	}
+	if (ft_verifdouble(stack_a) == true)
+		free_error_a(stack_a);
 }

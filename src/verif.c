@@ -18,10 +18,11 @@ bool	ft_verifdouble(t_stack *stack_a)
 	int	j;
 
 	i = 0;
-	while (stack_a->tab[i])
+	j = 0;
+	while (i < stack_a->len)
 	{
 		j = i + 1;
-		while (stack_a->tab[j])
+		while (j < stack_a->len)
 		{
 			if (stack_a->tab[i] == stack_a->tab[j])
 				return (true);
@@ -68,8 +69,8 @@ bool	antilonglong(char *str)
 	while (str[i])
 	{
 		if (i >= 10)
-			return(true);
+			return (true);
 		i++;
 	}
-	return(false);
+	return (false);
 }

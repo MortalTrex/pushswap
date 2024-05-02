@@ -19,7 +19,7 @@ void	free_error_a(t_stack *stack_a)
 	exit(1);
 }
 
-void	free_error(t_stack *stack_a, t_stack *stack_b, int	error)
+void	free_error(t_stack *stack_a, t_stack *stack_b, int error)
 {
 	if (stack_a != NULL)
 		free(stack_a->tab);

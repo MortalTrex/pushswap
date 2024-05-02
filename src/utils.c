@@ -14,10 +14,10 @@
 
 int	ft_stack_a_len(char **argv)
 {
-	int len;
+	int	len;
 
 	len = 0;
-	while(argv[len])
+	while (argv[len])
 		len++;
 	return (len);
 }
@@ -30,14 +30,14 @@ void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
 	stack_b->len = 0;
 }
 
-void	print_tab(t_stack	*stacktab)
+void	print_tab(t_stack	*stack)
 {
 	int	i;
 
 	i = 0;
-	while (i < stacktab->len)
+	while (i < stack->len)
 	{
-		printf("%d\n", stacktab->tab[i]);
+		printf("%d\n", stack->tab[i]);
 		i++;
 	}
 }
