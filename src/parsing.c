@@ -42,16 +42,15 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 	int		len;
 
 	len = ft_stack_a_len(argv);
-	printf("longueur : %d\n", len);
 	stack_a->tab = malloc(sizeof(int) * len);
 	if (!stack_a->tab)
 		free_error_a(stack_a);
 	stack_a->len = len;
 	i = 0;
+	if (antilonglong(argv[i]) == true)
+		free_error_a(stack_a);
 	while (argv[i])
 	{
-		if (antilonglong(argv[i]) == true)
-			free_error_a(stack_a);
 		if (ft_verifsyntax(argv[i]))
 			free_error_a(stack_a);
 		number = ft_atol(stack_a, argv[i]);

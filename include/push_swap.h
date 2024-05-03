@@ -40,16 +40,16 @@ void					free_error_a(t_stack *stack_a);
 
 // VERIF
 void					print_tab(t_stack *stack);
-bool					ft_verifsyntax(char *argv);
 bool					ft_issort(t_stack stacktab);
 bool					antilonglong(char *str);
 bool					ft_verifdouble(t_stack *stack_a);
+bool					ft_verifsyntax(char *str);
 
 // PARSING
 void					ft_parsing(t_stack *stack_a, char **argv);
 
 // UTILS 
-t_stack					create_index(t_stack *stacktab, int count);
+void					create_index(t_stack *result, t_stack *stack_a, int count);
 void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
 int						ft_stack_a_len(char **argv);
 

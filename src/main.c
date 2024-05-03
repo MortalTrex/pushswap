@@ -14,24 +14,27 @@
 
 void	ft_radix(t_stack stack_a)
 {
+	t_stack	stack_a_index;
 	t_stack	stack_b;
 
 	init_stack_b(&stack_a, &stack_b);
-	stack_a = create_index(&stack_a, 0);
-	if (stack_a.len == 2)
-		rab(&stack_a, 0);
-	if (stack_a.len == 3)
-		sort_three_elements(&stack_a);
-	if (stack_a.len == 4)
-		sort_four_elements(&stack_a, &stack_b);
-	if (stack_a.len == 5)
-		sort_five_elements(&stack_a, &stack_b);
-	if (stack_a.len > 5)
-		radix_sort(&stack_a, &stack_b);
+	stack_a_index.tab = malloc(sizeof(int) * stack_a.len);
+	create_index(&stack_a_index, &stack_a, 0);
+	if (stack_a_index.len == 2)
+		rab(&stack_a_index, 0);
+	if (stack_a_index.len == 3)
+		sort_three_elements(&stack_a_index);
+	if (stack_a_index.len == 4)
+		sort_four_elements(&stack_a_index, &stack_b);
+	if (stack_a_index.len == 5)
+		sort_five_elements(&stack_a_index, &stack_b);
+	if (stack_a_index.len > 5)
+		radix_sort(&stack_a_index, &stack_b);
 	printf("\033[0;33mAprès le radix :\033[0m\n");
-	print_tab(&stack_a);
-	printf("Stack triée ?: %d\n", ft_issort(stack_a));
-	free_error(&stack_a, &stack_b, 1);
+	print_tab(&stack_a_index);
+	printf("Stack triée ?: %d\n", ft_issort(stack_a_index));
+	free_error(&stack_a, &stack_b, 0);
+	free(stack_a_index.tab);
 }
 
 int	main(int argc, char **argv)
@@ -47,7 +50,10 @@ int	main(int argc, char **argv)
 	}
 	ft_parsing(&stack_a, argv + add);
 	if (ft_issort(stack_a))
-		free_error_a(&stack_a);
+	{
+		free(stack_a.tab);
+		exit(1);
+	}
 	ft_radix(stack_a);
-	free_error_a(&stack_a);
+	exit(1);
 }

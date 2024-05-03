@@ -42,30 +42,27 @@ void	print_tab(t_stack	*stack)
 	}
 }
 
-t_stack	create_index(t_stack	*stacktab, int count)
+void	create_index(t_stack *result, t_stack	*stack_a, int count)
 {
-	t_stack	result;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	result.tab = malloc(sizeof(int) * stacktab->len);
-	if (!result.tab)
+	if (!result->tab)
 		exit(1);
-	result.len = stacktab->len;
-	while (i < result.len)
+	result->len = stack_a->len;
+	while (i < result->len)
 	{
-		while (j < result.len)
+		while (j < result->len)
 		{
-			if (stacktab->tab[i] > stacktab->tab[j])
+			if (stack_a->tab[i] > stack_a->tab[j])
 				count++;
 			j++;
 		}
-		result.tab[i] = count;
+		result->tab[i] = count;
 		count = 0;
 		j = 0;
 		i++;
 	}
-	return (result);
 }

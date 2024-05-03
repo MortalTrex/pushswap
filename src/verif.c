@@ -47,16 +47,20 @@ bool	ft_issort(t_stack stacktab)
 	return (true);
 }
 
-bool	ft_verifsyntax(char *argv)
+bool	ft_verifsyntax(char *str)
 {
-	if (!(*argv == '+' || *argv == '-' || (*argv >= '0' && *argv <= '9')))
+	int	i;
+
+	i = 0;
+	if (!(str[i] == '+' || str[i] == '-' || (str[i] >= '0' && str[i] <= '9')))
 		return (true);
-	if ((*argv == '+' || *argv == '-') && !(argv[1] >= '0' && argv[1] <= '9'))
+	if ((str[i] == '+' || str[i] == '-') && !(str[1] >= '0' && str[1] <= '9'))
 		return (true);
-	while (*++argv)
+	while (str[i])
 	{
-		if (!(*argv >= '0' && *argv <= '9'))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (true);
+		i++;
 	}
 	return (false);
 }
@@ -66,6 +70,8 @@ bool	antilonglong(char *str)
 	int	i;
 
 	i = 0;
+	while (str[i] == '0' || str[i] == '+' || str[i] == '-')
+		i++;
 	while (str[i])
 	{
 		if (i >= 10)
