@@ -35,7 +35,7 @@ void					rrab(t_stack *stack_a, int stack);
 void					rrr(t_stack *stack_a, t_stack *stack_b);
 
 // FREE
-void					free_error(t_stack *stack_a, t_stack *stack_b, int error);
+void					free_error(t_stack *stack_a, t_stack *stack_b, int err);
 void					free_error_a(t_stack *stack_a);
 
 // VERIF
@@ -49,9 +49,10 @@ bool					ft_verifsyntax(char *str);
 void					ft_parsing(t_stack *stack_a, char **argv);
 
 // UTILS 
-void					create_index(t_stack *result, t_stack *stack_a, int count);
+void					create_index(t_stack *res, t_stack *stack_a, int count);
 void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
 int						ft_stack_a_len(char **argv);
+int						find_bit_size(int a_size);
 
 // RADIX
 void					ft_radix(t_stack stack_a);

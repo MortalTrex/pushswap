@@ -19,13 +19,13 @@ void	free_error_a(t_stack *stack_a)
 	exit(1);
 }
 
-void	free_error(t_stack *stack_a, t_stack *stack_b, int error)
+void	free_error(t_stack *stack_a, t_stack *stack_b, int err)
 {
 	if (stack_a != NULL)
 		free(stack_a->tab);
 	if (stack_b != NULL)
 		free(stack_b->tab);
-	if (error == 1)
+	if (err == 1)
 	{
 		ft_printf("Error\n");
 		exit(1);

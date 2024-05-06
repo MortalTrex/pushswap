@@ -30,7 +30,7 @@ void	init_stack_b(t_stack *stack_a, t_stack *stack_b)
 	stack_b->len = 0;
 }
 
-void	print_tab(t_stack	*stack)
+void	print_tab(t_stack *stack)
 {
 	int	i;
 
@@ -42,25 +42,38 @@ void	print_tab(t_stack	*stack)
 	}
 }
 
-void	create_index(t_stack *result, t_stack	*stack_a, int count)
+int	find_bit_size(int a_size)
 {
-	int		i;
-	int		j;
+	int	bit_size;
+
+	bit_size = 0;
+	while (a_size > 1)
+	{
+		a_size = a_size / 2;
+		bit_size++;
+	}
+	return (bit_size);
+}
+
+void	create_index(t_stack *res, t_stack *stack_a, int count)
+{
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	if (!result->tab)
+	if (!res->tab)
 		exit(1);
-	result->len = stack_a->len;
-	while (i < result->len)
+	res->len = stack_a->len;
+	while (i < res->len)
 	{
-		while (j < result->len)
+		while (j < res->len)
 		{
 			if (stack_a->tab[i] > stack_a->tab[j])
 				count++;
 			j++;
 		}
-		result->tab[i] = count;
+		res->tab[i] = count;
 		count = 0;
 		j = 0;
 		i++;

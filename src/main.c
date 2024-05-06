@@ -12,14 +12,8 @@
 
 #include "../include/push_swap.h"
 
-void	ft_radix(t_stack stack_a)
+void	ft_check_len(t_stack stack_a_index, t_stack stack_b)
 {
-	t_stack	stack_a_index;
-	t_stack	stack_b;
-
-	init_stack_b(&stack_a, &stack_b);
-	stack_a_index.tab = malloc(sizeof(int) * stack_a.len);
-	create_index(&stack_a_index, &stack_a, 0);
 	if (stack_a_index.len == 2)
 		rab(&stack_a_index, 0);
 	if (stack_a_index.len == 3)
@@ -33,13 +27,13 @@ void	ft_radix(t_stack stack_a)
 	printf("\033[0;33mAprès le radix :\033[0m\n");
 	print_tab(&stack_a_index);
 	printf("Stack triée ?: %d\n", ft_issort(stack_a_index));
-	free_error(&stack_a, &stack_b, 0);
-	free(stack_a_index.tab);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack			stack_a;
+	t_stack			stack_a_index;
+	t_stack			stack_b;
 	int				add;
 
 	add = 1;
@@ -54,6 +48,11 @@ int	main(int argc, char **argv)
 		free(stack_a.tab);
 		exit(1);
 	}
-	ft_radix(stack_a);
+	init_stack_b(&stack_a, &stack_b);
+	stack_a_index.tab = malloc(sizeof(int) * stack_a.len);
+	create_index(&stack_a_index, &stack_a, 0);
+	ft_check_len(stack_a_index, stack_b);
+	free_error(&stack_a, &stack_b, 0);
+	free(stack_a_index.tab);
 	exit(1);
 }

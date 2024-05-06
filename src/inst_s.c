@@ -22,7 +22,7 @@ void	sa(t_stack *stack_a, bool print)
 	stack_a->tab[0] = stack_a->tab[1];
 	stack_a->tab[1] = temp;
 	if (print == true)
-		printf("sa\n");
+		ft_printf("sa\n");
 }
 
 void	sb(t_stack *stack_b, bool print)
@@ -35,12 +35,12 @@ void	sb(t_stack *stack_b, bool print)
 	stack_b->tab[0] = stack_b->tab[1];
 	stack_b->tab[1] = temp;
 	if (print == true)
-		printf("sb\n");
+		ft_printf("sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a, false);
 	sb(stack_b, false);
-	printf("ss\n");
+	ft_printf("ss\n");
 }
