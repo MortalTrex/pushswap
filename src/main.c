@@ -6,11 +6,12 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:18 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/22 21:12:03 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/06 15:22:46 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
 
 void	ft_check_len(t_stack stack_a_index, t_stack stack_b)
 {
@@ -37,6 +38,8 @@ int	main(int argc, char **argv)
 	int				add;
 
 	add = 1;
+	if (argc == 1)
+		return 0;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
