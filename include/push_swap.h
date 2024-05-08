@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:36:52 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/22 21:11:46 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/08 21:32:10 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void					rrr(t_stack *stack_a, t_stack *stack_b);
 // FREE
 void					free_error(t_stack *stack_a, t_stack *stack_b, int err);
 void					free_error_a(t_stack *stack_a);
+void	free_split_error(t_stack *stack_a, char **split);
 
 // VERIF
 void					print_tab(t_stack *stack);
-bool					ft_issort(t_stack stacktab);
+bool					ft_issort(t_stack *stack);
 bool					antilonglong(char *str);
 bool					ft_verifdouble(t_stack *stack_a);
 bool					ft_verifsyntax(char *str);
@@ -61,6 +62,7 @@ void					ft_radix(t_stack stack_a);
 void					sort_three_elements(t_stack *stack_a);
 void					sort_four_elements(t_stack *stack_a, t_stack *stack_b);
 void					sort_five_elements(t_stack *stack_a, t_stack *stack_b);
+void					sort_four_five_elements(t_stack *stack_a, t_stack *stack_b);
 void					radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:19:45 by rbalazs           #+#    #+#             */
-/*   Updated: 2023/12/13 11:19:48 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/08 21:30:40 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
-
+# include <stdbool.h>
 # include <stdio.h>
 # include <ctype.h>
 # include <stdlib.h>
@@ -62,7 +62,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+bool	ft_only_space(char **strs);
+void	free_split(char **strs);
 //bonus
 
 t_list	*ft_lstnew(void *content);

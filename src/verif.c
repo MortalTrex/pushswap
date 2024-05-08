@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalazs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:18:19 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/12 18:18:20 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/08 17:06:03 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ bool	ft_verifdouble(t_stack *stack_a)
 	return (false);
 }
 
-bool	ft_issort(t_stack stacktab)
+bool	ft_issort(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	while (i < stacktab.len - 1)
+	while (i < stack->len - 1)
 	{
-		if (stacktab.tab[i] > stacktab.tab[i + 1])
+		if (stack->tab[i] > stack->tab[i + 1])
 			return (false);
 		i++;
 	}
@@ -52,9 +52,9 @@ bool	ft_verifsyntax(char *str)
 	int	i;
 
 	i = 0;
-	if (!(str[i] == '+' || str[i] == '-' || (str[i] >= '0' && str[i] <= '9')))
-		return (true);
-	if ((str[i] == '+' || str[i] == '-') && !(str[1] >= '0' && str[1] <= '9'))
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
 		return (true);
 	while (str[i])
 	{

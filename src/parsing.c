@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/04/22 21:19:55 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/08 21:32:30 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 	stack_a->len = len;
 	i = 0;
 	if (antilonglong(argv[i]) == true)
-		free_error_a(stack_a);
+		free_split_error(stack_a, argv);
 	while (argv[i])
 	{
 		if (ft_verifsyntax(argv[i]))
