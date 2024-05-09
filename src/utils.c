@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:18:11 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/08 15:15:41 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/09 07:33:39 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,30 @@ int	find_bit_size(int a_size)
 	return (bit_size);
 }
 
-void	create_index(t_stack *res, t_stack *stack_a, int count)
+t_stack	create_index(t_stack *stack_a, int count)
 {
-	int	i;
-	int	j;
+	t_stack	stack_a_index;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
-	if (!res->tab)
+	stack_a_index.tab = malloc(sizeof(int) * stack_a->len);
+	if (!stack_a_index.tab)
 		exit(1);
-	res->len = stack_a->len;
-	while (i < res->len)
+	stack_a_index.len = stack_a->len;
+	while (i < stack_a_index.len)
 	{
-		while (j < res->len)
+		while (j < stack_a_index.len)
 		{
 			if (stack_a->tab[i] > stack_a->tab[j])
 				count++;
 			j++;
 		}
-		res->tab[i] = count;
+		stack_a_index.tab[i] = count;
 		count = 0;
 		j = 0;
 		i++;
 	}
+	return (stack_a_index);
 }

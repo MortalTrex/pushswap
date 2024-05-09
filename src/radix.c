@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:36 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/08 13:32:45 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/09 06:01:41 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sort_in_a(int j, t_stack *stack_a, t_stack *stack_b)
 {
-	int a_size;
+	int	a_size;
 
 	a_size = stack_a->len;
 	while (a_size-- && !ft_issort(stack_a))
@@ -28,7 +28,7 @@ void	sort_in_a(int j, t_stack *stack_a, t_stack *stack_b)
 
 void	sort_in_b(int i, t_stack *stack_a, t_stack *stack_b)
 {
-	int b_size;
+	int	b_size;
 
 	b_size = stack_b->len;
 	while (b_size-- && !ft_issort(stack_a))
@@ -45,8 +45,8 @@ void	sort_in_b(int i, t_stack *stack_a, t_stack *stack_b)
 
 void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	int			bit_size;
-	int			i;
+	int	bit_size;
+	int	i;
 
 	bit_size = find_bit_size(stack_a->len);
 	i = 0;

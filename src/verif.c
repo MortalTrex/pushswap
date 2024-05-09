@@ -6,11 +6,20 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:18:19 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/08 17:06:03 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/09 15:05:20 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	ft_verifonlyspace(char **argv)
+{
+	if (ft_only_space(argv) == true)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
 
 bool	ft_verifdouble(t_stack *stack_a)
 {
@@ -72,6 +81,8 @@ bool	antilonglong(char *str)
 	i = 0;
 	while (str[i] == '0' || str[i] == '+' || str[i] == '-')
 		i++;
+	str += i;
+	i = 0;
 	while (str[i])
 	{
 		if (i >= 10)
