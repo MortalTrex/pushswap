@@ -6,12 +6,11 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:18:11 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 15:38:09 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 19:47:29 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 
 int	ft_stack_len(t_linked_stack *stack)
 {
@@ -37,7 +36,7 @@ t_stack	ft_hybrid_listtotab(t_linked_stack *stacklist)
 	stacktab.len = sizelist;
 	stacktab.tab = malloc(sizeof(int) * sizelist);
 	if (!stacktab.tab)
-		exit(1);
+		free_linkedstack(&stacklist, 1);
 	while (i < sizelist)
 	{
 		stacktab.tab[i] = stacklist->nbr;
@@ -90,7 +89,7 @@ int	find_bit_size(int a_size)
 	return (bit_size);
 }
 
-t_stack	create_index(t_stack *stack_a, int count)
+t_stack	create_index(t_stack *stack_a, t_stack *stack_b, int count)
 {
 	t_stack	stack_a_index;
 	int		i;
@@ -100,7 +99,7 @@ t_stack	create_index(t_stack *stack_a, int count)
 	j = 0;
 	stack_a_index.tab = malloc(sizeof(int) * stack_a->len);
 	if (!stack_a_index.tab)
-		exit(1);
+		free_error(stack_a, stack_b, 1);
 	stack_a_index.len = stack_a->len;
 	while (i < stack_a_index.len)
 	{

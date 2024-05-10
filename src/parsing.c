@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 17:41:53 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 18:28:45 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ t_linked_stack	*find_last(t_linked_stack *stack)
 		stack = stack->next;
 	return (stack);
 }
-static void	append_node(t_linked_stack **stack, int number)
+static bool	append_node(t_linked_stack **stack, int number)
 {
 	t_linked_stack	*node;
 	t_linked_stack	*last_node;
 
 	if (!stack)
-		return ;
+		return (false);
 	node = malloc(sizeof(t_linked_stack));
 	if (!node)
-		return ;
+		return (false);
 	node->next = NULL;
 	node->nbr = number;
 	if (!(*stack))
@@ -59,25 +59,25 @@ static void	append_node(t_linked_stack **stack, int number)
 		last_node = find_last(*stack);
 		last_node->next = node;
 	}
+	return (true);
 }
 void	ft_parsing(t_linked_stack **stack_a, char **split)
 {
-	long number;
-	int i;
+	long	number;
+	int		i;
 
 	i = 0;
-	if (antilonglong(split[i]) == true)
-		free_l_split_error(stack_a, split);
 	while (split[i])
 	{
+		if (antilonglong(split[i]) == true)
+			free_l_split_error(stack_a, split);
 		if (ft_verifsyntax(split[i]))
 			free_l_split_error(stack_a, split);
 		number = ft_atol(split[i]);
-		//printf("number = %ld\n", number);
 		if (number < -2147483648 || number > 2147483647)
 			free_l_split_error(stack_a, split);
-		//lst.add_back(number);
-		append_node(stack_a, (int)number);
+		if (append_node(stack_a, (int)number) == false)
+			free_l_split_error(stack_a, split);
 		i++;
 	}
 }

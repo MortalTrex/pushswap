@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:36:52 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 17:05:52 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 19:10:04 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void 					ft_verifonlyspace(char **argv);
 void					ft_parsing(t_linked_stack **stack_a, char **argv);
 
 // UTILS 
-t_stack					create_index(t_stack *stack_a, int count);
+t_stack					create_index(t_stack *stack_a, t_stack *stack_b, int count);
 void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
 int						ft_stack_a_len(char **argv);
 int						find_bit_size(int a_size);

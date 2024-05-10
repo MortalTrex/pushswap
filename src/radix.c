@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:36 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/09 06:01:41 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 20:31:57 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 
 	bit_size = find_bit_size(stack_a->len);
 	i = 0;
-	while (i <= bit_size)
+	while (i <= bit_size && i < 5)
 	{
 		sort_in_a(i, stack_a, stack_b);
 		sort_in_b(i + 1, stack_a, stack_b);

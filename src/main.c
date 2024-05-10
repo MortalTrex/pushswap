@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:18 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 17:42:09 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 19:47:48 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_check_len(t_stack *a, t_stack *b)
 {
 	t_stack	stack_a_index;
 
-	stack_a_index = create_index(a, 0);
+	stack_a_index = create_index(a, b, 0);
 	if (stack_a_index.len == 2)
 		rab(&stack_a_index, 0);
 	if (stack_a_index.len == 3)
@@ -54,18 +54,17 @@ int	main(int argc, char **argv)
 	t_stack			stack_a;
 	char			**split;
 	int				i;
+	t_stack			stack_b;
 
-	t_stack	stack_b;
 	l_stack_a = NULL;
+	if (argc <= 1)
+		return (0);
 	ft_verifonlyspace(argv);
 	if (argv == NULL || argv[0] == NULL)
 	{
-		ft_free_splt(argv);
 		ft_putstr_fd("Error\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	if (argc <= 1)
-		return (0);
 	i = 1;
 	while (argv[i])
 	{
@@ -76,14 +75,13 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 		ft_parsing(&l_stack_a, split);
-		
 		ft_free_splt(split);
 		i++;
 	}
 	stack_a = ft_hybrid_listtotab(l_stack_a);
 	free_linkedstack(&l_stack_a, 0);
 	if (ft_verifdouble(&stack_a) == true)
-	 	free_error_a(&stack_a);
+		free_error_a(&stack_a);
 	if (ft_issort(&stack_a))
 	{
 		free(stack_a.tab);
@@ -91,7 +89,6 @@ int	main(int argc, char **argv)
 	}
 	init_stack_b(&stack_a, &stack_b);
 	ft_check_len(&stack_a, &stack_b);
-	print_tab(&stack_a);
 	free_error(&stack_a, &stack_b, 0);
 	return (0);
 }
