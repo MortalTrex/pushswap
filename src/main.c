@@ -12,6 +12,50 @@
 
 #include "../include/push_swap.h"
 
+size_t    ft_argvlen(char **strs)
+{
+    size_t    len;
+    int        i;
+
+    len = 0;
+    i = 1;
+    while (strs[i])
+    {
+        len = len + ft_strlen(strs[i]);
+        i++;
+    }
+    return (len);
+}
+
+char    *ft_strjoin_space(char **argv)
+{
+    int        i;
+    int        j;
+    int        index_join;
+    char    *join;
+
+    i = 1;
+    index_join = 0;
+    join = malloc(sizeof(char) + (ft_argvlen(argv) * 2) + 1);
+    if (!join)
+        return (NULL);
+    while (argv[i])
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            join[index_join] = argv[i][j];
+            index_join++;
+            j++;
+        }
+        join[index_join] = ' ';
+        index_join++;
+        i++;
+    }
+    join[index_join] = '\0';
+    return (join);
+}
+
 void	ft_check_len(t_stack a, t_stack stack_b)
 {
 	t_stack	stack_a_index;
@@ -29,50 +73,6 @@ void	ft_check_len(t_stack a, t_stack stack_b)
 		radix_sort(&stack_a_index, &stack_b);
 	free(stack_a_index.tab);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	t_stack	stack_a;
-	t_stack	stack_a_index;
-	t_stack	stack_b;
-	int		add;
-
-	if (ft_only_space(argv) == true)
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	add = 1;
-	// checker si un arguments est VIDE ou COUTIENT que des WHITESPACE
-	// un ARV empty = argv[1][0] = '\0'
-	if (argc == 1)
-		return (0);
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-			if (!argv)
-			{
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_FAILURE);
-			}
-		add = 0;
-	}
-	ft_parsing(&stack_a, argv + add);
-	if (ft_issort(&stack_a))
-	{
-		free(stack_a.tab);
-		exit(1);
-	}
-	init_stack_b(&stack_a, &stack_b);
-	stack_a_index.tab = malloc(sizeof(int) * stack_a.len);
-	create_index(&stack_a_index, &stack_a, 0);
-	ft_check_len(stack_a_index, stack_b);
-	free_error(&stack_a, &stack_b, 0);
-	free(stack_a_index.tab);
-	exit(1);
-}
-*/
 
 int	ft_quotes(char **argv)
 {
@@ -102,29 +102,16 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-	int		add;
-	int		i;
+	int	i;
 
-	add = 1;
+	if (argc <= 1)
+		return (0);
 	ft_verifonlyspace(argv);
-	if (argc < 2)
-		return (1);
-	/*if (argc == 2 && argv[1][0] != '\0')
+	for (i = 1; i < argc; i++) 
 	{
-	 	argv = ft_split(argv[1], ' ');
-	 	add = ft_quotes(argv);
+    ft_split(argv[i], ' ');
 	}
-	*/
-	i = 1;
-	while (argv[i])
-	{
-		argv = ft_split(argv[i], ' ');
-		i ++;
-	}
-	add = ft_quotes(argv);
-	ft_parsing(&stack_a, argv + add);
-	if (add == 0)
-		ft_free_splt(argv);
+  ft_parsing(&stack_a, argv);
 	if (ft_issort(&stack_a))
 	{
 		free(stack_a.tab);

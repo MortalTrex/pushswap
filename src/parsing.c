@@ -59,7 +59,8 @@ void	ft_parsing(t_stack *stack_a, char **argv)
 		stack_a->tab[i] = number;
 		i++;
 	}
+	printf("VALEURS INSEREES : \n");
+	print_tab(stack_a);
 	if (ft_verifdouble(stack_a) == true)
 		free_split_error(stack_a, argv);
-	printf("stack_a->len = %d\n", stack_a->len);
 }
