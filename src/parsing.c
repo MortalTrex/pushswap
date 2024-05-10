@@ -6,13 +6,13 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/09 16:16:30 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 17:27:39 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static long	ft_atol(t_stack *stack, const char *str)
+static long	ft_atol(const char *str)
 {
 	long	result;
 	int		sign;
@@ -28,38 +28,56 @@ static long	ft_atol(t_stack *stack, const char *str)
 			sign = -1;
 		str++;
 	}
-	if (!ft_isdigit(*str))
-		free_error_a(stack);
 	while (ft_isdigit(*str))
 		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
-
-void	ft_parsing(t_stack *stack_a, char **argv)
+t_linked_stack	*find_last(t_linked_stack *stack)
 {
-	long	number;
-	int		i;
-	int		len;
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
+}
+static void	append_node(t_linked_stack **stack, int number)
+{
+	t_linked_stack	*node;
+	t_linked_stack	*last_node;
 
-	len = ft_stack_a_len(argv);
-	stack_a->tab = malloc(sizeof(int) * len);
-	if (!stack_a->tab)
-		free_split_error(stack_a, argv);
-	stack_a->len = len;
-	i = 0;
-	if (antilonglong(argv[i]) == true)
-		free_split_error(stack_a, argv);
-	while (argv[i])
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_linked_stack));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->nbr = number;
+	if (!(*stack))
+		*stack = node;
+	else
 	{
-		if (ft_verifsyntax(argv[i]))
-			free_split_error(stack_a, argv);
-		number = ft_atol(stack_a, argv[i]);
+		last_node = find_last(*stack);
+		last_node->next = node;
+	}
+}
+void	ft_parsing(t_linked_stack **stack_a, char **split)
+{
+	long number;
+	int i;
+
+	i = 0;
+	if (antilonglong(split[i]) == true)
+		free_l_split_error(stack_a, split);
+	while (split[i])
+	{
+		if (ft_verifsyntax(split[i]))
+			free_l_split_error(stack_a, split);
+		number = ft_atol(split[i]);
+		//printf("number = %ld\n", number);
 		if (number < -2147483648 || number > 2147483647)
-			free_split_error(stack_a, argv);
-		stack_a->tab[i] = number;
+			free_l_split_error(stack_a, split);
+		//lst.add_back(number);
+		append_node(stack_a, (int)number);
 		i++;
 	}
-	if (ft_verifdouble(stack_a) == true)
-		free_split_error(stack_a, argv);
-	printf("stack_a->len = %d\n", stack_a->len);
 }

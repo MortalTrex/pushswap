@@ -6,11 +6,46 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:18:11 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/09 07:33:39 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:38:09 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+
+int	ft_stack_len(t_linked_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
+}
+
+t_stack	ft_hybrid_listtotab(t_linked_stack *stacklist)
+{
+	int		i;
+	int		sizelist;
+	t_stack	stacktab;
+
+	i = 0;
+	sizelist = ft_stack_len(stacklist);
+	stacktab.len = sizelist;
+	stacktab.tab = malloc(sizeof(int) * sizelist);
+	if (!stacktab.tab)
+		exit(1);
+	while (i < sizelist)
+	{
+		stacktab.tab[i] = stacklist->nbr;
+		stacklist = stacklist->next;
+		i++;
+	}
+	return (stacktab);
+}
 
 int	ft_stack_a_len(char **argv)
 {

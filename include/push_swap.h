@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:36:52 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/09 07:45:33 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/10 17:05:52 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdbool.h>
 
 // STRUCTURES
+typedef struct s_linked_stack
+{
+	int					nbr;
+	struct s_linked_stack	*next;
+}				t_linked_stack;
+
 typedef struct s_stack
 {
 	int					*tab;
@@ -39,6 +45,8 @@ void					free_error(t_stack *stack_a, t_stack *stack_b, int err);
 void					free_error_a(t_stack *stack_a);
 void					free_split_error(t_stack *stack_a, char **split);
 void					ft_free_splt(char **split_result);
+void 					free_l_split_error(t_linked_stack **stack_a, char **split);
+void					free_linkedstack(t_linked_stack **stack, int error);
 
 // VERIF
 void					print_tab(t_stack *stack);
@@ -49,13 +57,14 @@ bool					ft_verifsyntax(char *str);
 void 					ft_verifonlyspace(char **argv);
 
 // PARSING
-void					ft_parsing(t_stack *stack_a, char **argv);
+void					ft_parsing(t_linked_stack **stack_a, char **argv);
 
 // UTILS 
 t_stack					create_index(t_stack *stack_a, int count);
 void					init_stack_b(t_stack *stack_a, t_stack *stack_b);
 int						ft_stack_a_len(char **argv);
 int						find_bit_size(int a_size);
+t_stack					ft_hybrid_listtotab(t_linked_stack *stacklist);
 
 // RADIX
 void					ft_radix(t_stack stack_a);

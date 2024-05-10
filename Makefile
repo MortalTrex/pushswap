@@ -12,7 +12,8 @@ SRC = src/free.c		\
 	src/sort_elements.c		\
 	src/utils.c		\
 	src/verif.c     \
-	src/main.c
+	src/main.c		\
+	src/free_list.c
 DEPS = include/push_swap.h
 LIBFT_DIR = libft/
 LIBFT_LIB = libft/libft.a
