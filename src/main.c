@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:18 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 19:47:48 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/11 15:20:28 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,30 @@ void	ft_check_len(t_stack *a, t_stack *b)
 	free(stack_a_index.tab);
 }
 
-int	ft_quotes(char **argv)
+void	tab_part(t_linked_stack **l_stack_a)
 {
-	int	i;
+	t_stack			stack_a;
+	t_stack			stack_b;
 
-	i = 0;
-	while (argv[i])
+	stack_a = ft_hybrid_listtotab(*l_stack_a);
+	free_linkedstack(l_stack_a, 0);
+	if (ft_verifdouble(&stack_a) == true)
+		free_error_a(&stack_a);
+	if (ft_issort(&stack_a))
 	{
-		if (ft_verifsyntax(argv[i]))
-		{
-			ft_free_splt(argv);
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_FAILURE);
-		}
-		i++;
+		free(stack_a.tab);
+		return ;
 	}
-	return (0);
+	init_stack_b(&stack_a, &stack_b);
+	ft_check_len(&stack_a, &stack_b);
+	free_error(&stack_a, &stack_b, 0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_linked_stack	*l_stack_a;
-	t_stack			stack_a;
 	char			**split;
 	int				i;
-	t_stack			stack_b;
 
 	l_stack_a = NULL;
 	if (argc <= 1)
@@ -69,26 +68,12 @@ int	main(int argc, char **argv)
 	while (argv[i])
 	{
 		split = ft_split(argv[i], ' ');
-		if (split == NULL)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_FAILURE);
-		}
+		if (split == NULL || split[0] == 0)
+			free_l_split_error(&l_stack_a, split);
 		ft_parsing(&l_stack_a, split);
 		ft_free_splt(split);
 		i++;
 	}
-	stack_a = ft_hybrid_listtotab(l_stack_a);
-	free_linkedstack(&l_stack_a, 0);
-	if (ft_verifdouble(&stack_a) == true)
-		free_error_a(&stack_a);
-	if (ft_issort(&stack_a))
-	{
-		free(stack_a.tab);
-		return (1);
-	}
-	init_stack_b(&stack_a, &stack_b);
-	ft_check_len(&stack_a, &stack_b);
-	free_error(&stack_a, &stack_b, 0);
+	tab_part(&l_stack_a);
 	return (0);
 }

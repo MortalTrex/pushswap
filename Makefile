@@ -1,36 +1,52 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = src/free.c		\
-	src/inst_pr.c		\
-	src/inst_rr.c		\
-	src/inst_s.c		\
-	src/parsing.c			\
-	src/radix.c		\
-	src/sort_elements.c		\
-	src/utils.c		\
-	src/verif.c     \
-	src/main.c		\
-	src/free_list.c
-DEPS = include/push_swap.h
-LIBFT_DIR = libft/
-LIBFT_LIB = libft/libft.a
+LIBFT_PATH = libft
+LIBFT_NAME = libft.a
+LIBFT = $(LIBFT_PATH)/$(LIBFT_NAME)
 
-all : $(NAME)
-$(NAME) : $(LIBFT_LIB) $(SRC) $(DEPS)
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT_LIB) -o $(NAME)
+INC = -Iinclude -Ilibft
 
-$(LIBFT_LIB):
-	$(MAKE) -C $(LIBFT_DIR)
+SRC = src/free.c \
+      src/inst_pr.c \
+      src/inst_rr.c \
+      src/inst_s.c \
+      src/parsing.c \
+      src/radix.c \
+      src/sort_elements.c \
+      src/utils.c \
+      src/verif.c \
+      src/main.c \
+      src/linked_list.c
+
+OBJ_DIR = build
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
+
+all: $(LIBFT) $(NAME)
+
+$(OBJ_DIR)/%.o: %.c
+	@echo Compiling $<
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+
+$(LIBFT):
+	@echo "Making Libft"
+	@make -C $(LIBFT_PATH) > /dev/null
+
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC)
+	@echo "push_swap ready."
 
 clean:
-	make clean -C $(LIBFT_DIR)
+	@echo Cleaning up object files	
+	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFT_PATH) > /dev/null
 
-fclean:
-	make fclean -C $(LIBFT_DIR)
-	rm -rf $(NAME)
+fclean: clean
+	@make clean -C $(LIBFT_PATH) > /dev/null
+	@rm -rf $(NAME)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:17:26 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/10 18:28:45 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/11 11:44:52 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static long	ft_atol(const char *str)
 		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
+
 t_linked_stack	*find_last(t_linked_stack *stack)
 {
 	if (!stack)
@@ -40,6 +41,7 @@ t_linked_stack	*find_last(t_linked_stack *stack)
 		stack = stack->next;
 	return (stack);
 }
+
 static bool	append_node(t_linked_stack **stack, int number)
 {
 	t_linked_stack	*node;
@@ -61,6 +63,7 @@ static bool	append_node(t_linked_stack **stack, int number)
 	}
 	return (true);
 }
+
 void	ft_parsing(t_linked_stack **stack_a, char **split)
 {
 	long	number;
