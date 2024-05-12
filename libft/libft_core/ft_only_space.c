@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:58:44 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/09 14:52:37 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/12 21:01:33 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	ft_only_space(char **strs)
 {
 	int	i;
 	int	j;
- 
+
 	i = 1;
 	while (strs[i])
 	{

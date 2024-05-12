@@ -4,8 +4,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_PATH = libft
-LIBFT_NAME = libft.a
-LIBFT = $(LIBFT_PATH)/$(LIBFT_NAME)
+LIBFT = libft.a
+#LIBFT = $(LIBFT_PATH)/$(LIBFT_NAME)
 
 INC = -Iinclude -Ilibft
 
@@ -24,7 +24,7 @@ SRC = src/free.c \
 OBJ_DIR = build
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-all: $(LIBFT) $(NAME)
+all:  $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@echo Compiling $<
@@ -33,19 +33,19 @@ $(OBJ_DIR)/%.o: %.c
 
 $(LIBFT):
 	@echo "Making Libft"
-	@make -C $(LIBFT_PATH) > /dev/null
+	@make -C $(LIBFT_PATH)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC)
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_PATH) $(INC) -lft
 	@echo "push_swap ready."
 
 clean:
 	@echo Cleaning up object files	
 	@rm -rf $(OBJ_DIR)
-	@make clean -C $(LIBFT_PATH) > /dev/null
+	@make clean -C $(LIBFT_PATH)
 
 fclean: clean
-	@make clean -C $(LIBFT_PATH) > /dev/null
+	@make clean -C $(LIBFT_PATH)
 	@rm -rf $(NAME)
 
 re: fclean all

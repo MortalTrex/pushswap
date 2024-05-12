@@ -6,7 +6,7 @@
 /*   By: rbalazs <rbalazs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:08:45 by rbalazs           #+#    #+#             */
-/*   Updated: 2024/05/08 21:02:27 by rbalazs          ###   ########.fr       */
+/*   Updated: 2024/05/12 21:00:55 by rbalazs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_free_split(char **res, int index)
 	free(res);
 }
 
-static void	ft_processwords(char const *s, char c, char **res, int words)
+static bool	ft_processwords(char const *s, char c, char **res, int words)
 {
 	int	i;
 	int	j;
@@ -81,14 +81,11 @@ static void	ft_processwords(char const *s, char c, char **res, int words)
 			n++;
 		res[j] = ft_strndup_split(s, i, n);
 		if (!res[j])
-		{
-			ft_free_split(res, j);
-			return ;
-		}
+			return (ft_free_split(res, j), false);
 		j++;
 		i += n;
 	}
-	res[j] = NULL;
+	return (res[j] = NULL, true);
 }
 
 char	**ft_split(char const *s, char c)
@@ -102,21 +99,26 @@ char	**ft_split(char const *s, char c)
 	res = malloc(sizeof(char *) * (words + 1));
 	if (!res)
 		return (NULL);
-	ft_processwords(s, c, res, words);
+	if (ft_processwords(s, c, res, words) == false)
+		return (NULL);
 	return (res);
 }
 
 /*
-int main()
+int	main(void)
 {
-  char *s = "salutca-va";
+	char	*s;
+	char	**res;
+	int		i;
+
+  s = "salutca-va";
   printf("Il y'a %d mots\n", ft_countwords(s, ' '));
-  char **res = ft_split(s, '-');
-  int i = 0;
+  res = ft_split(s, '-');
+  i = 0;
   while(res[i])
   {
-    printf("%s", res[i]);
-    i++;
+	printf("%s", res[i]);
+	i++;
   }
   free(res);
 }
